@@ -47,7 +47,8 @@ routes; prose still says 38). The structural fix:
 2. [`.github/workflows/sync-spec.yml`](.github/workflows/sync-spec.yml)
    runs that weekly and on manual dispatch, and commits `openapi.json`
    here only when it changed. **Run it once manually** — that first run
-   creates `openapi.json`.
+   creates `openapi.json`. If `monsterwhat/Fides` is private, add a
+   classic PAT (`repo` scope) as repo secret `FIDES_SYNC_TOKEN` first.
 3. The Pages workflow publishes whatever is on `main`, spec included.
 
 Optional: ping this repo from Fides on every push via

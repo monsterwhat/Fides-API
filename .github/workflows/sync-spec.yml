@@ -29,6 +29,10 @@ jobs:
         with:
           repository: monsterwhat/Fides
           path: .fides-src
+          # If monsterwhat/Fides is private, create a classic PAT with
+          # `repo` scope, save it as repo secret FIDES_SYNC_TOKEN, and it
+          # is used here. Public repos work with the default token.
+          token: ${{ secrets.FIDES_SYNC_TOKEN || github.token }}
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
       - name: Export OpenAPI spec
