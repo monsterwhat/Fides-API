@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fides — Reportes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo"><img src="assets/icon.png" alt="Fides" width="24" height="24">Fides</a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link" data-i18n="nav_home">Inicio</a>
+        <a href="api-reference.html" class="nav__link nav__link--active" data-i18n="nav_api_reference">Referencia API</a>
+      </div>
+      <div class="lang-switcher">
+        <button data-lang="en" class="lang-switcher__btn" title="English">EN</button>
+        <button data-lang="es" class="lang-switcher__btn" title="Español">ES</button>
+        <button data-lang="fr" class="lang-switcher__btn" title="Français">FR</button>
+        <button data-lang="de" class="lang-switcher__btn" title="Deutsch">DE</button>
+      </div>
+      <button class="nav__hamburger" aria-label="Menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile-menu">
+    <a href="index.html" class="nav__mobile-link" data-i18n="nav_home">Inicio</a>
+    <a href="api-reference.html" class="nav__mobile-link" data-i18n="nav_api_reference">Referencia API</a>
+    <div class="lang-switcher" style="display:flex;justify-content:center;margin:12px 0;">
+      <button data-lang="en" class="lang-switcher__btn" title="English">EN</button>
+      <button data-lang="es" class="lang-switcher__btn" title="Español">ES</button>
+      <button data-lang="fr" class="lang-switcher__btn" title="Français">FR</button>
+      <button data-lang="de" class="lang-switcher__btn" title="Deutsch">DE</button>
+    </div>
+  </div>
+
+  <div class="api-layout">
+    <aside class="api-sidebar" id="sidebar">
+      <div class="api-sidebar__group">
+        <div class="api-sidebar__heading" data-i18n="api_sidebar_title">Referencia API</div>
+        <div class="api-sidebar__links">
+          <div style="padding: 4px 20px; font-size: 12px; color: var(--text-tertiary);">
+            <span data-i18n="api_sidebar_base_url">Base URL:</span>
+            <code style="color: var(--accent-primary);">/api/v1</code>
+          </div>
+        </div>
+      </div>
+      <div class="api-sidebar__group">
+        <a href="index.html#overview" class="api-sidebar__link" data-i18n="api_sidebar_overview">Descripción General</a>
+        <a href="index.html#authentication" class="api-sidebar__link" data-i18n="api_sidebar_authentication">Autenticación</a>
+        <a href="index.html#errors" class="api-sidebar__link" data-i18n="api_sidebar_errors">Errores</a>
+      </div>
+      <div class="api-sidebar__group">
+        <button class="api-sidebar__heading" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('hidden')">
+          <span data-i18n="api_sidebar_public">Endpoints Públicos</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="api-sidebar__links">
+          <a href="api-public.html" class="api-sidebar__link" data-i18n="api_sidebar_health">Salud</a>
+        </div>
+      </div>
+      <div class="api-sidebar__group">
+        <button class="api-sidebar__heading" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('hidden')">
+          <span data-i18n="api_sidebar_protected">Endpoints Protegidos</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="api-sidebar__links">
+          <a href="api-auth.html" class="api-sidebar__link" data-i18n="api_sidebar_auth">Autenticación</a>
+          <a href="api-documents.html" class="api-sidebar__link" data-i18n="api_sidebar_documents">Documentos</a>
+          <a href="api-invoices.html" class="api-sidebar__link" data-i18n="api_sidebar_invoices">Facturas</a>
+          <a href="api-submissions.html" class="api-sidebar__link" data-i18n="api_sidebar_submissions">Envíos</a>
+          <a href="api-companies.html" class="api-sidebar__link" data-i18n="api_sidebar_companies">Empresas</a>
+          <a href="api-branches.html" class="api-sidebar__link" data-i18n="api_sidebar_branches">Sucursales</a>
+          <a href="api-pos.html" class="api-sidebar__link" data-i18n="api_sidebar_pos">Puntos de Venta</a>
+          <a href="api-certificates.html" class="api-sidebar__link" data-i18n="api_sidebar_certificates">Certificados</a>
+          <a href="api-credentials.html" class="api-sidebar__link" data-i18n="api_sidebar_credentials">Credenciales</a>
+          <a href="api-api-keys.html" class="api-sidebar__link" data-i18n="api_sidebar_api_keys">Llaves API</a>
+          <a href="api-reports.html" class="api-sidebar__link api-sidebar__link--active" data-i18n="api_sidebar_reports">Reportes</a>
+          <a href="api-webhooks.html" class="api-sidebar__link" data-i18n="api_sidebar_webhooks">Webhooks</a>
+        </div>
+      </div>
+    </aside>
+    <main class="api-main">
+      <h1 data-i18n="api_section_reports">Reportes</h1>
+      <p data-i18n="api_section_reports_desc">Consultas analíticas de ventas, impuestos y documentos. Todos los endpoints aceptan parámetros de fecha para filtrar por período.</p>
+
+      <!-- Summary -->
+      <section class="endpoint" id="summary">
+        <div class="endpoint__header">
+          <span class="badge badge--green">GET</span>
+          <code class="endpoint__path">/api/v1/reports/summary</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_reports_summary_title">Resumen de ventas</h3>
+          <p data-i18n="api_reports_summary_desc">Get an aggregated sales summary for the specified period including total sales, document count, average ticket, and tax totals.</p>
+          <h4 data-i18n="api_th_parameter">Parámetros de Consulta</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th data-i18n="api_th_field">Campo</th><th data-i18n="api_th_type">Tipo</th><th data-i18n="api_th_required">Requerido</th><th data-i18n="api_th_description">Descripción</th></tr></thead>
+              <tbody>
+                <tr><td><code>start_date</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_reports_param_start_date">Start of the reporting period (ISO 8601)</td></tr>
+                <tr><td><code>end_date</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_reports_param_end_date">End of the reporting period (ISO 8601)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h4 data-i18n="api_reports_response_ok">Response — OK (200)</h4>
+          <pre><code>{
+  "total_sales": 4850000.00,
+  "document_count": 342,
+  "average_ticket": 14180.12,
+  "total_tax": 630500.00,
+  "total_discount": 125000.00
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Sales by Period -->
+      <section class="endpoint" id="sales-by-period">
+        <div class="endpoint__header">
+          <span class="badge badge--green">GET</span>
+          <code class="endpoint__path">/api/v1/reports/sales-by-period</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_reports_period_title">Ventas por período</h3>
+          <p data-i18n="api_reports_period_desc">Break down sales by time period (day, week, or month). Useful for trend analysis.</p>
+          <h4 data-i18n="api_th_parameter">Parámetros de Consulta</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th data-i18n="api_th_field">Campo</th><th data-i18n="api_th_type">Tipo</th><th data-i18n="api_th_required">Requerido</th><th data-i18n="api_th_description">Descripción</th></tr></thead>
+              <tbody>
+                <tr><td><code>start_date</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_reports_param_start_date">Start of the reporting period (ISO 8601)</td></tr>
+                <tr><td><code>end_date</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_reports_param_end_date">End of the reporting period (ISO 8601)</td></tr>
+                <tr><td><code>period</code></td><td>string</td><td data-i18n="api_reports_required_no">No</td><td data-i18n-html="api_reports_period_param_period">Granularity: <code>"day"</code>, <code>"week"</code>, or <code>"month"</code>. Default: <code>"day"</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h4 data-i18n="api_reports_response_ok">Response — OK (200)</h4>
+          <pre><code>[
+  {
+    "period": "2026-01-01",
+    "total_sales": 185000.00,
+    "document_count": 12
+  },
+  {
+    "period": "2026-01-02",
+    "total_sales": 210500.00,
+    "document_count": 15
+  },
+  {
+    "period": "2026-01-03",
+    "total_sales": 165750.00,
+    "document_count": 9
+  }
+]</code></pre>
+        </div>
+      </section>
+
+      <!-- Sales by Receiver -->
+      <section class="endpoint" id="sales-by-receiver">
+        <div class="endpoint__header">
+          <span class="badge badge--green">GET</span>
+          <code class="endpoint__path">/api/v1/reports/sales-by-receiver</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_reports_receiver_title">Ventas por receptor</h3>
+          <p data-i18n="api_reports_receiver_desc">Break down sales by receiver/customer. Shows top customers by revenue.</p>
+          <h4 data-i18n="api_th_parameter">Parámetros de Consulta</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th data-i18n="api_th_field">Campo</th><th data-i18n="api_th_type">Tipo</th><th data-i18n="api_th_required">Requerido</th><th data-i18n="api_th_description">Descripción</th></tr></thead>
+              <tbody>
+                <tr><td><code>start_date</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_reports_param_start_date">Start of the reporting period (ISO 8601)</td></tr>
+                <tr><td><code>end_date</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_reports_param_end_date">End of the reporting period (ISO 8601)</td></tr>
+                <tr><td><code>limit</code></td><td>int</td><td data-i18n="api_reports_required_no">No</td><td data-i18n-html="api_reports_receiver_param_limit">Max number of receivers to return. Default: <code>20</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h4 data-i18n="api_reports_response_ok">Response — OK (200)</h4>
+          <pre><code>[
+  {
+    "receiver_name": "Distribuidora Central S.A.",
+    "receiver_id_number": "3101234567",
+    "total_sales": 1250000.00,
+    "document_count": 87
+  },
+  {
+    "receiver_name": "Comercializadora del Norte",
+    "receiver_id_number": "2098765432",
+    "total_sales": 980000.00,
+    "document_count": 64
+  },
+  {
+    "receiver_name": "Importaciones y Exportaciones Tres Ríos",
+    "receiver_id_number": "3107654321",
+    "total_sales": 750000.00,
+    "document_count": 45
+  }
+]</code></pre>
+        </div>
+      </section>
+
+      <!-- Sales by Activity -->
+      <section class="endpoint" id="sales-by-activity">
+        <div class="endpoint__header">
+          <span class="badge badge--green">GET</span>
+          <code class="endpoint__path">/api/v1/reports/sales-by-activity</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_reports_activity_title">Ventas por actividad</h3>
+          <p data-i18n="api_reports_activity_desc">Break down sales by CABYS activity code. Useful for understanding which product categories generate the most revenue.</p>
+          <h4 data-i18n="api_th_parameter">Parámetros de Consulta</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th data-i18n="api_th_field">Campo</th><th data-i18n="api_th_type">Tipo</th><th data-i18n="api_th_required">Requerido</th><th data-i18n="api_th_description">Descripción</th></tr></thead>
+              <tbody>
+                <tr><td><code>start_date</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_reports_param_start_date">Start of the reporting period (ISO 8601)</td></tr>
+                <tr><td><code>end_date</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_reports_param_end_date">End of the reporting period (ISO 8601)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h4 data-i18n="api_reports_response_ok">Response — OK (200)</h4>
+          <pre><code>[
+  {
+    "activity_code": "46100",
+    "activity_description": "Venta al por mayor de productos alimenticios",
+    "total_sales": 2100000.00,
+    "document_count": 145
+  },
+  {
+    "activity_code": "46200",
+    "activity_description": "Venta al por mayor de productos no alimenticios",
+    "total_sales": 1500000.00,
+    "document_count": 98
+  },
+  {
+    "activity_code": "46900",
+    "activity_description": "Venta al por mayor de otros tipos de mercancía",
+    "total_sales": 890000.00,
+    "document_count": 62
+  }
+]</code></pre>
+        </div>
+      </section>
+
+      <!-- Tax Summary -->
+      <section class="endpoint" id="tax-summary">
+        <div class="endpoint__header">
+          <span class="badge badge--green">GET</span>
+          <code class="endpoint__path">/api/v1/reports/tax-summary</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_reports_tax_title">Resumen de impuestos</h3>
+          <p data-i18n="api_reports_tax_desc">Tax summary showing IVA (sales tax) breakdown by rate. Shows taxable amounts, tax amounts, and exemptions.</p>
+          <h4 data-i18n="api_th_parameter">Parámetros de Consulta</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th data-i18n="api_th_field">Campo</th><th data-i18n="api_th_type">Tipo</th><th data-i18n="api_th_required">Requerido</th><th data-i18n="api_th_description">Descripción</th></tr></thead>
+              <tbody>
+                <tr><td><code>start_date</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_reports_param_start_date">Start of the reporting period (ISO 8601)</td></tr>
+                <tr><td><code>end_date</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_reports_param_end_date">End of the reporting period (ISO 8601)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h4 data-i18n="api_reports_response_ok">Response — OK (200)</h4>
+          <pre><code>{
+  "total_taxable": 4850000.00,
+  "total_tax": 630500.00,
+  "exemptions": 250000.00,
+  "breakdown": [
+    {
+      "rate": 13.00,
+      "taxable_amount": 4200000.00,
+      "tax_amount": 546000.00
+    },
+    {
+      "rate": 0.00,
+      "taxable_amount": 400000.00,
+      "tax_amount": 0.00
+    },
+    {
+      "rate": 1.00,
+      "taxable_amount": 250000.00,
+      "tax_amount": 2500.00
+    }
+  ]
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Vouchers by Status -->
+      <section class="endpoint" id="vouchers-by-status">
+        <div class="endpoint__header">
+          <span class="badge badge--green">GET</span>
+          <code class="endpoint__path">/api/v1/reports/vouchers-by-status</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_reports_vouchers_title">Comprobantes por estado</h3>
+          <p data-i18n="api_reports_vouchers_desc">Count of documents grouped by their acceptance status from Hacienda.</p>
+          <h4 data-i18n="api_th_parameter">Parámetros de Consulta</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th data-i18n="api_th_field">Campo</th><th data-i18n="api_th_type">Tipo</th><th data-i18n="api_th_required">Requerido</th><th data-i18n="api_th_description">Descripción</th></tr></thead>
+              <tbody>
+                <tr><td><code>start_date</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_reports_param_start_date">Start of the reporting period (ISO 8601)</td></tr>
+                <tr><td><code>end_date</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_reports_param_end_date">End of the reporting period (ISO 8601)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h4 data-i18n="api_reports_response_ok">Response — OK (200)</h4>
+          <pre><code>[
+  {
+    "status": "Accepted",
+    "count": 310
+  },
+  {
+    "status": "Rejected",
+    "count": 18
+  },
+  {
+    "status": "Pending",
+    "count": 8
+  },
+  {
+    "status": "Error",
+    "count": 6
+  }
+]</code></pre>
+        </div>
+      </section>
+
+      <!-- Receiver Messages -->
+      <section class="endpoint" id="receiver-messages">
+        <div class="endpoint__header">
+          <span class="badge badge--green">GET</span>
+          <code class="endpoint__path">/api/v1/reports/receiver-messages</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_reports_receiver_msg_title">Mensajes del receptor</h3>
+          <p data-i18n="api_reports_receiver_msg_desc">Messages and rejection reasons from receivers and Hacienda. Shows why documents were rejected.</p>
+          <h4 data-i18n="api_th_parameter">Parámetros de Consulta</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th data-i18n="api_th_field">Campo</th><th data-i18n="api_th_type">Tipo</th><th data-i18n="api_th_required">Requerido</th><th data-i18n="api_th_description">Descripción</th></tr></thead>
+              <tbody>
+                <tr><td><code>start_date</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_reports_param_start_date">Start of the reporting period (ISO 8601)</td></tr>
+                <tr><td><code>end_date</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_reports_param_end_date">End of the reporting period (ISO 8601)</td></tr>
+                <tr><td><code>status</code></td><td>string</td><td data-i18n="api_reports_required_no">No</td><td data-i18n-html="api_reports_receiver_msg_param_status">Filter by status: <code>"rejected"</code> or <code>"accepted"</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h4 data-i18n="api_reports_response_ok">Response — OK (200)</h4>
+          <pre><code>[
+  {
+    "document_key": "e854b69c-3a42-4e8a-b1d0-7f5c9a2e1b34",
+    "receiver_name": "Distribuidora Central S.A.",
+    "status": "Rejected",
+    "message": "Receptor rechazó el documento",
+    "detail": "El monto total no coincide con el desglose de impuestos",
+    "timestamp": "2026-01-15T14:32:00Z"
+  },
+  {
+    "document_key": "a1c2d3e4-5f67-8g90-h1i2-j3k4l5m6n7o8",
+    "receiver_name": "Comercializadora del Norte",
+    "status": "Accepted",
+    "message": "Comprobante aceptado satisfactoriamente",
+    "detail": "",
+    "timestamp": "2026-01-15T10:15:00Z"
+  }
+]</code></pre>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand"><img src="assets/icon.png" alt="Fides" width="20" height="20">Fides <span class="footer__separator">·</span> <img src="assets/Mercurius.png" alt="Mercurius" width="20" height="20"> Mercurius <span class="footer__separator">·</span> <img src="assets/Mercatus.svg" alt="Mercatus" width="20" height="20"> Mercatus</div>
+      <div class="footer__links">
+        <a href="index.html" class="footer__link" data-i18n="nav_home">Inicio</a>
+        <a href="api-reference.html" class="footer__link" data-i18n="nav_api_reference">Referencia API</a>
+      </div>
+    </div>
+  </footer>
+  <script src="i18n.js"></script>
+  <script src="nav.js"></script>
+</body>
+</html>

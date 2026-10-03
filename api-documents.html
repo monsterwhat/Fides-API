@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fides — Documentos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="assets/icon.png" alt="Fides" width="24" height="24">
+        Fides
+      </a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link" data-i18n="nav_home">Inicio</a>
+        <a href="api-reference.html" class="nav__link nav__link--active" data-i18n="nav_api_reference">Referencia API</a>
+      </div>
+      <div class="lang-switcher">
+        <button data-lang="en" class="lang-switcher__btn" title="English">EN</button>
+        <button data-lang="es" class="lang-switcher__btn" title="Español">ES</button>
+        <button data-lang="fr" class="lang-switcher__btn" title="Français">FR</button>
+        <button data-lang="de" class="lang-switcher__btn" title="Deutsch">DE</button>
+      </div>
+      <button class="nav__hamburger" aria-label="Menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile-menu">
+    <a href="index.html" class="nav__mobile-link" data-i18n="nav_home">Inicio</a>
+    <a href="api-reference.html" class="nav__mobile-link" data-i18n="nav_api_reference">Referencia API</a>
+    <div class="lang-switcher" style="display:flex;justify-content:center;margin:12px 0;">
+      <button data-lang="en" class="lang-switcher__btn" title="English">EN</button>
+      <button data-lang="es" class="lang-switcher__btn" title="Español">ES</button>
+      <button data-lang="fr" class="lang-switcher__btn" title="Français">FR</button>
+      <button data-lang="de" class="lang-switcher__btn" title="Deutsch">DE</button>
+    </div>
+  </div>
+
+  <div class="api-layout">
+    <aside class="api-sidebar" id="sidebar">
+      <div class="api-sidebar__group">
+        <div class="api-sidebar__heading" data-i18n="api_sidebar_title">Referencia API</div>
+        <div class="api-sidebar__links">
+          <div style="padding: 4px 20px; font-size: 12px; color: var(--text-tertiary);">
+            <span data-i18n="api_sidebar_base_url">Base URL:</span>
+            <code style="color: var(--accent-primary);">/api/v1</code>
+          </div>
+        </div>
+      </div>
+      <div class="api-sidebar__group">
+        <a href="index.html#overview" class="api-sidebar__link" data-i18n="api_sidebar_overview">Descripción General</a>
+        <a href="index.html#authentication" class="api-sidebar__link" data-i18n="api_sidebar_authentication">Autenticación</a>
+        <a href="index.html#errors" class="api-sidebar__link" data-i18n="api_sidebar_errors">Errores</a>
+      </div>
+      <div class="api-sidebar__group">
+        <button class="api-sidebar__heading" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('hidden')">
+          <span data-i18n="api_sidebar_public">Endpoints Públicos</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="api-sidebar__links">
+          <a href="api-public.html" class="api-sidebar__link" data-i18n="api_sidebar_health">Salud</a>
+        </div>
+      </div>
+      <div class="api-sidebar__group">
+        <button class="api-sidebar__heading" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('hidden')">
+          <span data-i18n="api_sidebar_protected">Endpoints Protegidos</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="api-sidebar__links">
+          <a href="api-auth.html" class="api-sidebar__link" data-i18n="api_sidebar_auth">Autenticación</a>
+          <a href="api-documents.html" class="api-sidebar__link api-sidebar__link--active" data-i18n="api_sidebar_documents">Documentos</a>
+          <a href="api-invoices.html" class="api-sidebar__link" data-i18n="api_sidebar_invoices">Facturas</a>
+          <a href="api-submissions.html" class="api-sidebar__link" data-i18n="api_sidebar_submissions">Envíos</a>
+          <a href="api-companies.html" class="api-sidebar__link" data-i18n="api_sidebar_companies">Empresas</a>
+          <a href="api-branches.html" class="api-sidebar__link" data-i18n="api_sidebar_branches">Sucursales</a>
+          <a href="api-pos.html" class="api-sidebar__link" data-i18n="api_sidebar_pos">Puntos de Venta</a>
+          <a href="api-certificates.html" class="api-sidebar__link" data-i18n="api_sidebar_certificates">Certificados</a>
+          <a href="api-credentials.html" class="api-sidebar__link" data-i18n="api_sidebar_credentials">Credenciales</a>
+          <a href="api-api-keys.html" class="api-sidebar__link" data-i18n="api_sidebar_api_keys">Llaves API</a>
+          <a href="api-reports.html" class="api-sidebar__link" data-i18n="api_sidebar_reports">Reportes</a>
+          <a href="api-webhooks.html" class="api-sidebar__link" data-i18n="api_sidebar_webhooks">Webhooks</a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="api-main">
+      <h1 data-i18n="api_section_documents">Documentos</h1>
+      <p data-i18n="api_section_documents_desc">Crear, firmar, cancelar y gestionar documentos electrónicos. Todos los endpoints requieren autenticación.</p>
+
+      <!-- ======================== -->
+      <!-- Workflow -->
+      <!-- ======================== -->
+      <section class="endpoint" id="workflow">
+        <div class="endpoint__body">
+          <h3 data-i18n="api_docs_workflow_title">Flujo de Estados del Documento</h3>
+          <p data-i18n="api_docs_workflow_desc">Los documentos electrónicos en Fides pasan por los siguientes estados:</p>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th data-i18n="api_docs_workflow_th_state">Estado</th><th data-i18n="api_th_description">Descripción</th><th data-i18n="api_docs_workflow_th_transitions">Transiciones</th></tr></thead>
+              <tbody>
+                <tr><td><code>Draft</code></td><td data-i18n="api_docs_workflow_state_draft_desc">Borrador sin XML generado</td><td data-i18n="api_docs_workflow_state_draft_trans">→ Generated, → Cancelled</td></tr>
+                <tr><td><code>Generated</code></td><td data-i18n="api_docs_workflow_state_generated_desc">XML generado y validado</td><td data-i18n="api_docs_workflow_state_generated_trans">→ Signed, → Cancelled</td></tr>
+                <tr><td><code>Signed</code></td><td data-i18n="api_docs_workflow_state_signed_desc">Firmado digitalmente con XAdES</td><td data-i18n="api_docs_workflow_state_signed_trans">→ Submitted, → Cancelled</td></tr>
+                <tr><td><code>Submitted</code></td><td data-i18n="api_docs_workflow_state_submitted_desc">Enviado a Hacienda, esperando respuesta</td><td data-i18n="api_docs_workflow_state_submitted_trans">→ Accepted, → Rejected</td></tr>
+                <tr><td><code>Accepted</code></td><td data-i18n="api_docs_workflow_state_accepted_desc">Aceptado por Hacienda (proceso completo)</td><td data-i18n="api_docs_workflow_state_accepted_trans">Terminal</td></tr>
+                <tr><td><code>Rejected</code></td><td data-i18n="api_docs_workflow_state_rejected_desc">Rechazado por Hacienda</td><td data-i18n="api_docs_workflow_state_rejected_trans">→ Generated (reintento)</td></tr>
+                <tr><td><code>Cancelled</code></td><td data-i18n="api_docs_workflow_state_cancelled_desc">Cancelado por el usuario</td><td data-i18n="api_docs_workflow_state_cancelled_trans">Terminal</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================== -->
+      <!-- Document Types -->
+      <!-- ======================== -->
+      <section class="endpoint" id="doc-types">
+        <div class="endpoint__body">
+          <h3 data-i18n="api_docs_doc_types_title">Tipos de Documento</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th data-i18n="api_th_code">Código</th><th data-i18n="api_docs_doc_types_th_type">Tipo</th><th data-i18n="api_th_description">Descripción</th></tr></thead>
+              <tbody>
+                <tr><td><code>01</code></td><td>FE</td><td data-i18n="api_docs_doc_type_01_desc">Factura Electrónica</td></tr>
+                <tr><td><code>02</code></td><td>TE</td><td data-i18n="api_docs_doc_type_02_desc">Tiquete Electrónico</td></tr>
+                <tr><td><code>03</code></td><td>NC</td><td data-i18n="api_docs_doc_type_03_desc">Nota de Crédito</td></tr>
+                <tr><td><code>04</code></td><td>ND</td><td data-i18n="api_docs_doc_type_04_desc">Nota de Débito</td></tr>
+                <tr><td><code>05</code></td><td>REP</td><td data-i18n="api_docs_doc_type_05_desc">Recibo Electrónico de Pago</td></tr>
+                <tr><td><code>06</code></td><td>FEC</td><td data-i18n="api_docs_doc_type_06_desc">Factura de Compra Electrónica</td></tr>
+                <tr><td><code>07</code></td><td>FEE</td><td data-i18n="api_docs_doc_type_07_desc">Factura de Exportación Electrónica</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================== -->
+      <!-- 1. GET /api/v1/documents -->
+      <!-- ======================== -->
+      <section class="endpoint" id="list-documents">
+        <div class="endpoint__header">
+          <span class="badge badge--green">GET</span>
+          <code class="endpoint__path">/api/v1/documents</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_list_documents_title">Listar documentos</h3>
+          <p data-i18n="api_list_documents_desc">List all electronic documents for the authenticated tenant with pagination.</p>
+
+          <h4 data-i18n="api_query_params">Parámetros de Consulta</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th data-i18n="api_th_field">Campo</th><th data-i18n="api_th_type">Tipo</th><th data-i18n="api_th_required">Requerido</th><th data-i18n="api_th_description">Descripción</th></tr></thead>
+              <tbody>
+                <tr><td><code>page</code></td><td>integer</td><td data-i18n="api_reports_required_no">No</td><td data-i18n="api_docs_list_param_page">Número de página. Por defecto: <code>1</code></td></tr>
+                <tr><td><code>page_size</code></td><td>integer</td><td data-i18n="api_reports_required_no">No</td><td data-i18n="api_docs_list_param_page_size">Elementos por página. Por defecto: <code>20</code>, máximo: <code>100</code></td></tr>
+                <tr><td><code>doc_type</code></td><td>string</td><td data-i18n="api_reports_required_no">No</td><td data-i18n="api_docs_list_param_doc_type">Filtrar por tipo de documento (<code>"01"</code> a <code>"07"</code>)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 data-i18n="api_docs_response_200">Response — 200 OK</h4>
+          <pre><code>{
+  "total": 142,
+  "page": 1,
+  "page_size": 20,
+  "items": [
+    {
+      "id": "b3a7f8c1-4d2e-4b9a-8c3f-1e2d3a4b5c6d",
+      "key": "506612345678901234567890123456789012345678901234",
+      "doc_type": "01",
+      "status": "Accepted",
+      "seller_name": "Mi Empresa S.A.",
+      "receiver_name": "Cliente Final",
+      "created_at": "2026-07-10T14:30:00Z",
+      "updated_at": "2026-07-10T14:35:22Z"
+    },
+    {
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "key": "506698765432109876543210987654321098765432109876",
+      "doc_type": "03",
+      "status": "Generated",
+      "seller_name": "Mi Empresa S.A.",
+      "receiver_name": "Proveedor XYZ",
+      "created_at": "2026-07-11T09:15:00Z",
+      "updated_at": "2026-07-11T09:15:00Z"
+    }
+  ]
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- =================================== -->
+      <!-- 2. POST /api/v1/documents           -->
+      <!-- =================================== -->
+      <section class="endpoint" id="generate-document">
+        <div class="endpoint__header">
+          <span class="badge badge--blue">POST</span>
+          <code class="endpoint__path">/api/v1/documents</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_generate_document_title">Generar un nuevo documento electrónico</h3>
+          <p data-i18n="api_generate_document_desc">Generate a new electronic document from structured data. Creates the XML payload but does not sign or submit it.</p>
+
+          <h4 data-i18n="api_request_body">Cuerpo de la Solicitud</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th data-i18n="api_th_field">Campo</th><th data-i18n="api_th_type">Tipo</th><th data-i18n="api_th_required">Requerido</th><th data-i18n="api_th_description">Descripción</th></tr></thead>
+              <tbody>
+                <tr><td><code>doc_type</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_doc_type">Tipo de documento. Valores válidos: <code>"01"</code> a <code>"07"</code> (ver Tipos de Documento)</td></tr>
+                <tr><td><code>key</code></td><td>string</td><td data-i18n="api_reports_required_no">No</td><td data-i18n="api_docs_generate_param_key">Clave del documento (48 dígitos). Se genera automáticamente si no se proporciona</td></tr>
+                <tr><td><code>sequential</code></td><td>integer</td><td data-i18n="api_reports_required_no">No</td><td data-i18n="api_docs_generate_param_sequential">Número secuencial dentro de la sucursal. Se incrementa automáticamente</td></tr>
+                <tr><td><code>date</code></td><td>string</td><td data-i18n="api_reports_required_no">No</td><td data-i18n="api_docs_generate_param_date">Fecha de emisión en formato ISO 8601. Por defecto: fecha actual</td></tr>
+                <tr><td><code>seller_name</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_seller_name">Nombre comercial del vendedor</td></tr>
+                <tr><td><code>seller_id_number</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_seller_id_number">Número de identificación del vendedor</td></tr>
+                <tr><td><code>seller_id_type</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_seller_id_type">Tipo de identificación del vendedor: <code>"01"</code> (cédula), <code>"02"</code> (DIMEX), <code>"03"</code> (pasaporte)</td></tr>
+                <tr><td><code>receiver_name</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_receiver_name">Nombre del receptor</td></tr>
+                <tr><td><code>receiver_id_number</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_receiver_id_number">Número de identificación del receptor</td></tr>
+                <tr><td><code>receiver_id_type</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_receiver_id_type">Tipo de identificación del receptor: <code>"01"</code> (cédula), <code>"02"</code> (DIMEX), <code>"03"</code> (pasaporte)</td></tr>
+                <tr><td><code>receiver_email</code></td><td>string</td><td data-i18n="api_reports_required_no">No</td><td data-i18n="api_docs_generate_param_receiver_email">Correo electrónico del receptor para notificaciones</td></tr>
+                <tr><td><code>activity_code</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_activity_code">Código de actividad CABYS (13 dígitos)</td></tr>
+                <tr><td><code>details</code></td><td>array</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_details">Arreglo de líneas de detalle del documento</td></tr>
+                <tr><td><code>details[].description</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_details_desc">Descripción del producto o servicio</td></tr>
+                <tr><td><code>details[].quantity</code></td><td>number</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_details_quantity">Cantidad</td></tr>
+                <tr><td><code>details[].unit_price</code></td><td>number</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_details_unit_price">Precio unitario</td></tr>
+                <tr><td><code>details[].total_line_total</code></td><td>number</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_details_total">Total de la línea (quantity × unit_price − discount + taxes)</td></tr>
+                <tr><td><code>details[].discount</code></td><td>number</td><td data-i18n="api_reports_required_no">No</td><td data-i18n="api_docs_generate_param_details_discount">Monto de descuento. Por defecto: <code>0</code></td></tr>
+                <tr><td><code>details[].tax_rate</code></td><td>number</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_details_tax_rate">Porcentaje de impuesto (por ejemplo, <code>13</code> para 13%)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 data-i18n="api_docs_response_201">Response — 201 Created</h4>
+          <pre><code>{
+  "id": "b3a7f8c1-4d2e-4b9a-8c3f-1e2d3a4b5c6d",
+  "key": "506612345678901234567890123456789012345678901234",
+  "doc_type": "01",
+  "status": "Generated",
+  "seller_name": "Mi Empresa S.A.",
+  "receiver_name": "Cliente Final",
+  "created_at": "2026-07-13T10:00:00Z",
+  "updated_at": "2026-07-13T10:00:00Z",
+  "xml_content": "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\n&lt;FacturaElectronica ...&gt;\n  ...\n&lt;/FacturaElectronica&gt;"
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- =================================== -->
+      <!-- 3. GET /api/v1/documents/{id}       -->
+      <!-- =================================== -->
+      <section class="endpoint" id="get-document">
+        <div class="endpoint__header">
+          <span class="badge badge--green">GET</span>
+          <code class="endpoint__path">/api/v1/documents/{id}</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_get_document_title">Obtener estado del documento</h3>
+          <p data-i18n="api_get_document_desc">Retrieve the current status and metadata of an electronic document by its unique identifier.</p>
+
+          <h4 data-i18n="api_path_parameters">Parámetros de Ruta</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th data-i18n="api_th_field">Campo</th><th data-i18n="api_th_type">Tipo</th><th data-i18n="api_th_required">Requerido</th><th data-i18n="api_th_description">Descripción</th></tr></thead>
+              <tbody>
+                <tr><td><code>id</code></td><td>uuid</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_param_document_id">Identificador único del documento</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 data-i18n="api_docs_response_200">Response — 200 OK</h4>
+          <pre><code>{
+  "id": "b3a7f8c1-4d2e-4b9a-8c3f-1e2d3a4b5c6d",
+  "key": "506612345678901234567890123456789012345678901234",
+  "doc_type": "01",
+  "status": "Accepted",
+  "seller_name": "Mi Empresa S.A.",
+  "receiver_name": "Cliente Final",
+  "created_at": "2026-07-10T14:30:00Z",
+  "updated_at": "2026-07-10T14:35:22Z",
+  "xml_content": "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\n&lt;FacturaElectronica ...&gt;\n  ...\n&lt;/FacturaElectronica&gt;",
+  "signed_at": "2026-07-10T14:32:10Z",
+  "submitted_at": "2026-07-10T14:33:05Z"
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- ====================================== -->
+      <!-- 4. POST /api/v1/documents/{id}/sign    -->
+      <!-- ====================================== -->
+      <section class="endpoint" id="sign-document">
+        <div class="endpoint__header">
+          <span class="badge badge--blue">POST</span>
+          <code class="endpoint__path">/api/v1/documents/{id}/sign</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_sign_document_title">Firmar documento digitalmente (XAdES)</h3>
+          <p data-i18n="api_sign_document_desc">Digitally sign a generated document using XAdES. Only documents in "Generated" status can be signed. Requires a valid P12/PFX certificate.</p>
+
+          <h4 data-i18n="api_path_parameters">Parámetros de Ruta</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th data-i18n="api_th_field">Campo</th><th data-i18n="api_th_type">Tipo</th><th data-i18n="api_th_required">Requerido</th><th data-i18n="api_th_description">Descripción</th></tr></thead>
+              <tbody>
+                <tr><td><code>id</code></td><td>uuid</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_param_document_id">Identificador único del documento</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 data-i18n="api_request_body">Cuerpo de la Solicitud</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th data-i18n="api_th_field">Campo</th><th data-i18n="api_th_type">Tipo</th><th data-i18n="api_th_required">Requerido</th><th data-i18n="api_th_description">Descripción</th></tr></thead>
+              <tbody>
+                <tr><td><code>certificate_id</code></td><td>uuid</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_sign_param_certificate_id">ID del certificado digital P12/PFX registrado previamente</td></tr>
+                <tr><td><code>certificate_password</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_sign_param_certificate_password">Contraseña del certificado digital</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 data-i18n="api_docs_response_200">Response — 200 OK</h4>
+          <pre><code>{
+  "id": "b3a7f8c1-4d2e-4b9a-8c3f-1e2d3a4b5c6d",
+  "key": "506612345678901234567890123456789012345678901234",
+  "doc_type": "01",
+  "status": "Signed",
+  "signed_at": "2026-07-13T10:05:33Z",
+  "updated_at": "2026-07-13T10:05:33Z"
+}</code></pre>
+
+          <h4 data-i18n="api_docs_response_409">Response — 409 Conflict</h4>
+          <pre><code>{
+  "error": "document_not_signable",
+  "message": "El documento no se puede firmar porque su estado actual es 'Accepted'. Solo los documentos en estado 'Generated' pueden ser firmados."
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- =========================================== -->
+      <!-- 5. POST /api/v1/documents/{id}/cancel       -->
+      <!-- =========================================== -->
+      <section class="endpoint" id="cancel-document">
+        <div class="endpoint__header">
+          <span class="badge badge--blue">POST</span>
+          <code class="endpoint__path">/api/v1/documents/{id}/cancel</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_cancel_document_title">Cancelar un documento</h3>
+          <p data-i18n="api_cancel_document_desc">Cancel a document that has not yet been accepted by Hacienda. Only documents in "Signed" or "Submitted" status can be cancelled.</p>
+
+          <h4 data-i18n="api_path_parameters">Parámetros de Ruta</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th data-i18n="api_th_field">Campo</th><th data-i18n="api_th_type">Tipo</th><th data-i18n="api_th_required">Requerido</th><th data-i18n="api_th_description">Descripción</th></tr></thead>
+              <tbody>
+                <tr><td><code>id</code></td><td>uuid</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_param_document_id">Identificador único del documento</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 data-i18n="api_request_body">Cuerpo de la Solicitud</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th data-i18n="api_th_field">Campo</th><th data-i18n="api_th_type">Tipo</th><th data-i18n="api_th_required">Requerido</th><th data-i18n="api_th_description">Descripción</th></tr></thead>
+              <tbody>
+                <tr><td><code>reason</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_cancel_param_reason">Motivo de la cancelación del documento</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 data-i18n="api_docs_response_200">Response — 200 OK</h4>
+          <pre><code>{
+  "id": "b3a7f8c1-4d2e-4b9a-8c3f-1e2d3a4b5c6d",
+  "key": "506612345678901234567890123456789012345678901234",
+  "doc_type": "01",
+  "status": "Cancelled",
+  "cancelled_at": "2026-07-13T11:00:00Z",
+  "cancellation_reason": "Error en los datos del receptor",
+  "updated_at": "2026-07-13T11:00:00Z"
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- 6. POST /api/v1/documents/{id}/finalize      -->
+      <!-- ============================================ -->
+      <section class="endpoint" id="finalize-document">
+        <div class="endpoint__header">
+          <span class="badge badge--blue">POST</span>
+          <code class="endpoint__path">/api/v1/documents/{id}/finalize</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_finalize_document_title">Finalizar un documento</h3>
+          <p data-i18n="api_finalize_document_desc">Finalize a draft document by providing the complete payload. Generates the XML and validates against the schema.</p>
+
+          <h4 data-i18n="api_path_parameters">Parámetros de Ruta</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th data-i18n="api_th_field">Campo</th><th data-i18n="api_th_type">Tipo</th><th data-i18n="api_th_required">Requerido</th><th data-i18n="api_th_description">Descripción</th></tr></thead>
+              <tbody>
+                <tr><td><code>id</code></td><td>uuid</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_finalize_param_id">Identificador único del documento borrador</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 data-i18n="api_request_body">Cuerpo de la Solicitud</h4>
+          <p data-i18n-html="api_docs_finalize_same_fields">Mismos campos que el endpoint <a href="#generate-document">Generar un nuevo documento electrónico</a>. El cuerpo debe contener la información completa del documento.</p>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th data-i18n="api_th_field">Campo</th><th data-i18n="api_th_type">Tipo</th><th data-i18n="api_th_required">Requerido</th><th data-i18n="api_th_description">Descripción</th></tr></thead>
+              <tbody>
+                <tr><td><code>doc_type</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_finalize_param_doc_type">Tipo de documento. Valores válidos: <code>"01"</code> a <code>"07"</code></td></tr>
+                <tr><td><code>seller_name</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_seller_name">Nombre comercial del vendedor</td></tr>
+                <tr><td><code>seller_id_number</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_seller_id_number">Número de identificación del vendedor</td></tr>
+                <tr><td><code>seller_id_type</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_finalize_param_seller_id_type">Tipo de identificación del vendedor: <code>"01"</code>, <code>"02"</code>, <code>"03"</code></td></tr>
+                <tr><td><code>receiver_name</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_receiver_name">Nombre del receptor</td></tr>
+                <tr><td><code>receiver_id_number</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_receiver_id_number">Número de identificación del receptor</td></tr>
+                <tr><td><code>receiver_id_type</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_finalize_param_receiver_id_type">Tipo de identificación del receptor: <code>"01"</code>, <code>"02"</code>, <code>"03"</code></td></tr>
+                <tr><td><code>receiver_email</code></td><td>string</td><td data-i18n="api_reports_required_no">No</td><td data-i18n="api_docs_finalize_param_receiver_email">Correo electrónico del receptor</td></tr>
+                <tr><td><code>activity_code</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_finalize_param_activity_code">Código de actividad CABYS</td></tr>
+                <tr><td><code>details</code></td><td>array</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_finalize_param_details">Arreglo completo de líneas de detalle</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 data-i18n="api_docs_response_200">Response — 200 OK</h4>
+          <pre><code>{
+  "id": "c9d8e7f6-5a4b-3c2d-1e0f-9a8b7c6d5e4f",
+  "key": "506611112222333344445555666677778888999900001111",
+  "doc_type": "01",
+  "status": "Generated",
+  "seller_name": "Mi Empresa S.A.",
+  "receiver_name": "Cliente Final",
+  "created_at": "2026-07-13T08:00:00Z",
+  "updated_at": "2026-07-13T12:00:00Z",
+  "xml_content": "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\n&lt;FacturaElectronica ...&gt;\n  ...\n&lt;/FacturaElectronica&gt;"
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- ====================================== -->
+      <!-- 7. POST /api/v1/documents/draft        -->
+      <!-- ====================================== -->
+      <section class="endpoint" id="create-draft">
+        <div class="endpoint__header">
+          <span class="badge badge--blue">POST</span>
+          <code class="endpoint__path">/api/v1/documents/draft</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_create_draft_title">Crear un documento borrador</h3>
+          <p data-i18n="api_create_draft_desc">Create a draft document without generating XML. Save data for later review and finalization.</p>
+
+          <h4 data-i18n="api_request_body">Cuerpo de la Solicitud</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th data-i18n="api_th_field">Campo</th><th data-i18n="api_th_type">Tipo</th><th data-i18n="api_th_required">Requerido</th><th data-i18n="api_th_description">Descripción</th></tr></thead>
+              <tbody>
+                <tr><td><code>doc_type</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_draft_param_doc_type">Tipo de documento. Valores válidos: <code>"01"</code> a <code>"07"</code></td></tr>
+                <tr><td><code>seller_name</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_seller_name">Nombre comercial del vendedor</td></tr>
+                <tr><td><code>seller_id_number</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_seller_id_number">Número de identificación del vendedor</td></tr>
+                <tr><td><code>seller_id_type</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_finalize_param_seller_id_type">Tipo de identificación del vendedor: <code>"01"</code>, <code>"02"</code>, <code>"03"</code></td></tr>
+                <tr><td><code>receiver_name</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_receiver_name">Nombre del receptor</td></tr>
+                <tr><td><code>receiver_id_number</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_generate_param_receiver_id_number">Número de identificación del receptor</td></tr>
+                <tr><td><code>receiver_id_type</code></td><td>string</td><td data-i18n="api_reports_required_yes">Sí</td><td data-i18n="api_docs_finalize_param_receiver_id_type">Tipo de identificación del receptor: <code>"01"</code>, <code>"02"</code>, <code>"03"</code></td></tr>
+                <tr><td><code>receiver_email</code></td><td>string</td><td data-i18n="api_reports_required_no">No</td><td data-i18n="api_docs_finalize_param_receiver_email">Correo electrónico del receptor</td></tr>
+                <tr><td><code>activity_code</code></td><td>string</td><td data-i18n="api_reports_required_no">No</td><td data-i18n="api_docs_draft_param_activity_code">Código de actividad CABYS (opcional en borrador)</td></tr>
+                <tr><td><code>details</code></td><td>array</td><td data-i18n="api_reports_required_no">No</td><td data-i18n="api_docs_draft_param_details">Líneas de detalle (pueden añadirse o omitirse en borrador)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 data-i18n="api_docs_response_201">Response — 201 Created</h4>
+          <pre><code>{
+  "id": "d4e5f6a7-b8c9-0d1e-2f3a-4b5c6d7e8f9a",
+  "doc_type": "01",
+  "status": "Draft",
+  "seller_name": "Mi Empresa S.A.",
+  "receiver_name": "Cliente Final",
+  "created_at": "2026-07-13T08:30:00Z",
+  "updated_at": "2026-07-13T08:30:00Z"
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- =============================================== -->
+      <!-- 8. GET /api/v1/documents/pending-contingency    -->
+      <!-- =============================================== -->
+      <section class="endpoint" id="pending-contingency">
+        <div class="endpoint__header">
+          <span class="badge badge--green">GET</span>
+          <code class="endpoint__path">/api/v1/documents/pending-contingency</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_pending_contingency_title">Listar documentos de contingencia pendientes</h3>
+          <p data-i18n="api_pending_contingency_desc">List all pending contingency documents for the tenant. These are documents that need to be sent when connectivity is restored.</p>
+
+          <h4 data-i18n="api_docs_response_200">Response — 200 OK</h4>
+          <pre><code>{
+  "items": [
+    {
+      "id": "e1f2a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+      "key": "506699887766554433221100998877665544332211009988",
+      "doc_type": "01",
+      "status": "Signed",
+      "seller_name": "Mi Empresa S.A.",
+      "receiver_name": "Cliente Contingencia",
+      "created_at": "2026-07-12T16:45:00Z",
+      "contingency_pending_since": "2026-07-12T17:00:00Z",
+      "reason": "Conexión a Hacienda no disponible"
+    },
+    {
+      "id": "f3a4b5c6-d7e8-9f0a-1b2c-3d4e5f6a7b8c",
+      "key": "506611223344556677889900112233445566778899001122",
+      "doc_type": "02",
+      "status": "Signed",
+      "seller_name": "Mi Empresa S.A.",
+      "receiver_name": "Cliente Final",
+      "created_at": "2026-07-12T18:10:00Z",
+      "contingency_pending_since": "2026-07-12T18:15:00Z",
+      "reason": "Timeout al enviar a Hacienda"
+    }
+  ]
+}</code></pre>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/icon.png" alt="Fides" width="20" height="20">
+        Fides
+        <span class="footer__separator">·</span>
+        <img src="assets/Mercurius.png" alt="Mercurius" width="20" height="20">
+        Mercurius
+        <span class="footer__separator">·</span>
+        <img src="assets/Mercatus.svg" alt="Mercatus" width="20" height="20">
+        Mercatus
+      </div>
+      <div class="footer__links">
+        <a href="index.html" class="footer__link" data-i18n="nav_home">Inicio</a>
+        <a href="api-reference.html" class="footer__link" data-i18n="nav_api_reference">Referencia API</a>
+      </div>
+    </div>
+  </footer>
+  <script src="i18n.js"></script>
+  <script src="nav.js"></script>
+</body>
+</html>

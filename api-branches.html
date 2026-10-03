@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fides — Sucursales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo"><img src="assets/icon.png" alt="Fides" width="24" height="24">Fides</a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link" data-i18n="nav_home">Inicio</a>
+        <a href="api-reference.html" class="nav__link nav__link--active" data-i18n="nav_api_reference">Referencia API</a>
+      </div>
+      <div class="lang-switcher">
+        <button data-lang="en" class="lang-switcher__btn" title="English">EN</button>
+        <button data-lang="es" class="lang-switcher__btn" title="Español">ES</button>
+        <button data-lang="fr" class="lang-switcher__btn" title="Français">FR</button>
+        <button data-lang="de" class="lang-switcher__btn" title="Deutsch">DE</button>
+      </div>
+      <button class="nav__hamburger" aria-label="Menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile-menu">
+    <a href="index.html" class="nav__mobile-link" data-i18n="nav_home">Inicio</a>
+    <a href="api-reference.html" class="nav__mobile-link" data-i18n="nav_api_reference">Referencia API</a>
+    <div class="lang-switcher" style="display:flex;justify-content:center;margin:12px 0;">
+      <button data-lang="en" class="lang-switcher__btn" title="English">EN</button>
+      <button data-lang="es" class="lang-switcher__btn" title="Español">ES</button>
+      <button data-lang="fr" class="lang-switcher__btn" title="Français">FR</button>
+      <button data-lang="de" class="lang-switcher__btn" title="Deutsch">DE</button>
+    </div>
+  </div>
+
+  <div class="api-layout">
+    <aside class="api-sidebar" id="sidebar">
+      <div class="api-sidebar__group">
+        <div class="api-sidebar__heading" data-i18n="api_sidebar_title">Referencia API</div>
+        <div class="api-sidebar__links">
+          <div style="padding: 4px 20px; font-size: 12px; color: var(--text-tertiary);">
+            <span data-i18n="api_sidebar_base_url">Base URL:</span>
+            <code style="color: var(--accent-primary);">/api/v1</code>
+          </div>
+        </div>
+      </div>
+      <div class="api-sidebar__group">
+        <a href="index.html#overview" class="api-sidebar__link" data-i18n="api_sidebar_overview">Descripción General</a>
+        <a href="index.html#authentication" class="api-sidebar__link" data-i18n="api_sidebar_authentication">Autenticación</a>
+        <a href="index.html#errors" class="api-sidebar__link" data-i18n="api_sidebar_errors">Errores</a>
+      </div>
+      <div class="api-sidebar__group">
+        <button class="api-sidebar__heading" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('hidden')">
+          <span data-i18n="api_sidebar_public">Endpoints Públicos</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="api-sidebar__links">
+          <a href="api-public.html" class="api-sidebar__link" data-i18n="api_sidebar_health">Salud</a>
+        </div>
+      </div>
+      <div class="api-sidebar__group">
+        <button class="api-sidebar__heading" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('hidden')">
+          <span data-i18n="api_sidebar_protected">Endpoints Protegidos</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="api-sidebar__links">
+          <a href="api-auth.html" class="api-sidebar__link" data-i18n="api_sidebar_auth">Autenticación</a>
+          <a href="api-documents.html" class="api-sidebar__link" data-i18n="api_sidebar_documents">Documentos</a>
+          <a href="api-invoices.html" class="api-sidebar__link" data-i18n="api_sidebar_invoices">Facturas</a>
+          <a href="api-submissions.html" class="api-sidebar__link" data-i18n="api_sidebar_submissions">Envíos</a>
+          <a href="api-companies.html" class="api-sidebar__link" data-i18n="api_sidebar_companies">Empresas</a>
+          <a href="api-branches.html" class="api-sidebar__link api-sidebar__link--active" data-i18n="api_sidebar_branches">Sucursales</a>
+          <a href="api-pos.html" class="api-sidebar__link" data-i18n="api_sidebar_pos">Puntos de Venta</a>
+          <a href="api-certificates.html" class="api-sidebar__link" data-i18n="api_sidebar_certificates">Certificados</a>
+          <a href="api-credentials.html" class="api-sidebar__link" data-i18n="api_sidebar_credentials">Credenciales</a>
+          <a href="api-api-keys.html" class="api-sidebar__link" data-i18n="api_sidebar_api_keys">Llaves API</a>
+          <a href="api-reports.html" class="api-sidebar__link" data-i18n="api_sidebar_reports">Reportes</a>
+          <a href="api-webhooks.html" class="api-sidebar__link" data-i18n="api_sidebar_webhooks">Webhooks</a>
+        </div>
+      </div>
+    </aside>
+    <main class="api-main">
+      <section class="api-section" id="branches">
+        <div class="api-section__header">
+          <h1 data-i18n="api_branches_title">Sucursales</h1>
+          <p class="api-section__desc" data-i18n="api_branches_desc">Gestionar sucursales de empresa para operaciones multi-ubicación.</p>
+        </div>
+
+        <!-- GET /api/v1/companies/{company_id}/branches -->
+        <section class="endpoint" id="list-branches">
+          <div class="endpoint__header">
+            <span class="badge badge--green">GET</span>
+            <code class="endpoint__path">/api/v1/companies/{company_id}/branches</code>
+          </div>
+          <div class="endpoint__body">
+            <h3 data-i18n="api_list_branches_title">Listar sucursales de una empresa</h3>
+            <p data-i18n="api_list_branches_desc">Recupera todas las sucursales registradas para una empresa específica.</p>
+            <h4 data-i18n="api_path_parameters">Parámetros de Ruta</h4>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="api_th_field">Campo</th>
+                    <th data-i18n="api_th_type">Tipo</th>
+                    <th data-i18n="api_th_required">Requerido</th>
+                    <th data-i18n="api_th_description">Descripción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>company_id</code></td>
+                    <td>uuid</td>
+                    <td data-i18n="api_yes">Sí</td>
+                    <td data-i18n="api_param_company_id">Identificador único de la empresa.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h4 data-i18n="api_response_body">Cuerpo de la Respuesta</h4>
+            <p data-i18n="api_returns_branch_list">Devuelve una lista de sucursales asociadas a la empresa.</p>
+            <h4>Response — 200 OK</h4>
+            <pre><code>[
+  {
+    "id": "b2c3d4e5-f6a7-8901-bcde-f23456789012",
+    "company_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "code": "MATRIZ",
+    "name": "Sucursal Matriz",
+    "phone": "+506 2222-3333",
+    "email": "matriz@comervalley.co.cr",
+    "address": {
+      "province": "San José",
+      "canton": "San José",
+      "district": "Carmen",
+      "neighborhood": "Barrio La Merced",
+      "street": "Avenida Central, calle 5",
+      "details": "Edificio Torre Comercial, piso 3",
+      "postal_code": "10101"
+    }
+  },
+  {
+    "id": "c3d4e5f6-a7b8-9012-cdef-345678901234",
+    "company_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "code": "SUC-ALAJUELA",
+    "name": "Sucursal Alajuela",
+    "phone": "+506 2444-5555",
+    "email": "alajuela@comervalley.co.cr",
+    "address": {
+      "province": "Alajuela",
+      "canton": "Alajuela",
+      "district": "Guadalupe",
+      "neighborhood": "",
+      "street": "Avenida Central, 100 metros sur",
+      "details": "Edificio Plaza Comercial, local 5",
+      "postal_code": "20101"
+    }
+  }
+]</code></pre>
+          </div>
+        </section>
+
+        <!-- POST /api/v1/companies/{company_id}/branches -->
+        <section class="endpoint" id="create-branch">
+          <div class="endpoint__header">
+            <span class="badge badge--blue">POST</span>
+            <code class="endpoint__path">/api/v1/companies/{company_id}/branches</code>
+          </div>
+          <div class="endpoint__body">
+            <h3 data-i18n="api_create_branch_title">Crear sucursal</h3>
+            <p data-i18n-html="api_create_branch_desc">Registra una nueva sucursal dentro de una empresa. El campo <code>code</code> debe ser único dentro de la empresa.</p>
+            <h4 data-i18n="api_path_parameters">Parámetros de Ruta</h4>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="api_th_field">Campo</th>
+                    <th data-i18n="api_th_type">Tipo</th>
+                    <th data-i18n="api_th_required">Requerido</th>
+                    <th data-i18n="api_th_description">Descripción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>company_id</code></td>
+                    <td>uuid</td>
+                    <td data-i18n="api_yes">Sí</td>
+                    <td data-i18n="api_param_company_id">Identificador único de la empresa.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h4 data-i18n="api_request_body">Cuerpo de la Solicitud</h4>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="api_th_field">Campo</th>
+                    <th data-i18n="api_th_type">Tipo</th>
+                    <th data-i18n="api_th_required">Requerido</th>
+                    <th data-i18n="api_th_description">Descripción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>code</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_yes">Sí</td>
+                    <td data-i18n-html="api_field_branch_code">Código único de la sucursal dentro de la empresa (ej. <code>"MATRIZ"</code>, <code>"SUC-001"</code>).</td>
+                  </tr>
+                  <tr>
+                    <td><code>name</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_yes">Sí</td>
+                    <td data-i18n="api_field_branch_name">Nombre descriptivo de la sucursal.</td>
+                  </tr>
+                  <tr>
+                    <td><code>phone</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_phone">Número telefónico de la sucursal.</td>
+                  </tr>
+                  <tr>
+                    <td><code>email</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_email">Correo electrónico de contacto.</td>
+                  </tr>
+                  <tr>
+                    <td><code>address</code></td>
+                    <td>object</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_address">Objeto con la dirección física de la sucursal.</td>
+                  </tr>
+                  <tr>
+                    <td><code>address.province</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_province">Provincia.</td>
+                  </tr>
+                  <tr>
+                    <td><code>address.canton</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_canton">Cantón.</td>
+                  </tr>
+                  <tr>
+                    <td><code>address.district</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_district">Distrito.</td>
+                  </tr>
+                  <tr>
+                    <td><code>address.neighborhood</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_neighborhood">Barrio o conjunto residencial.</td>
+                  </tr>
+                  <tr>
+                    <td><code>address.street</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_street">Dirección exacta.</td>
+                  </tr>
+                  <tr>
+                    <td><code>address.details</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_details">Información adicional de la dirección.</td>
+                  </tr>
+                  <tr>
+                    <td><code>address.postal_code</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_postal_code">Código postal.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h4 data-i18n="api_request_example">Request — Ejemplo</h4>
+            <pre><code>{
+  "code": "SUC-ALAJUELA",
+  "name": "Sucursal Alajuela",
+  "phone": "+506 2444-5555",
+  "email": "alajuela@comervalley.co.cr",
+  "address": {
+    "province": "Alajuela",
+    "canton": "Alajuela",
+    "district": "Guadalupe",
+    "neighborhood": "",
+    "street": "Avenida Central, 100 metros sur",
+    "details": "Edificio Plaza Comercial, local 5",
+    "postal_code": "20101"
+  }
+}</code></pre>
+            <h4>Response — 201 Created</h4>
+            <pre><code>{
+  "id": "c3d4e5f6-a7b8-9012-cdef-345678901234",
+  "company_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "code": "SUC-ALAJUELA",
+  "name": "Sucursal Alajuela",
+  "phone": "+506 2444-5555",
+  "email": "alajuela@comervalley.co.cr",
+  "address": {
+    "province": "Alajuela",
+    "canton": "Alajuela",
+    "district": "Guadalupe",
+    "neighborhood": "",
+    "street": "Avenida Central, 100 metros sur",
+    "details": "Edificio Plaza Comercial, local 5",
+    "postal_code": "20101"
+  }
+}</code></pre>
+            <h4>Response — 409 Conflict</h4>
+            <pre><code>{
+  "error": "branch_code_already_exists",
+  "message": "Ya existe una sucursal con el código proporcionado para esta empresa."
+}</code></pre>
+          </div>
+        </section>
+
+        <!-- GET /api/v1/branches/{id} -->
+        <section class="endpoint" id="get-branch">
+          <div class="endpoint__header">
+            <span class="badge badge--green">GET</span>
+            <code class="endpoint__path">/api/v1/branches/{id}</code>
+          </div>
+          <div class="endpoint__body">
+            <h3 data-i18n="api_get_branch_title">Obtener sucursal por ID</h3>
+            <p data-i18n="api_get_branch_desc">Recupera una sucursal específica por su identificador único.</p>
+            <h4 data-i18n="api_path_parameters">Parámetros de Ruta</h4>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="api_th_field">Campo</th>
+                    <th data-i18n="api_th_type">Tipo</th>
+                    <th data-i18n="api_th_required">Requerido</th>
+                    <th data-i18n="api_th_description">Descripción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>id</code></td>
+                    <td>uuid</td>
+                    <td data-i18n="api_yes">Sí</td>
+                    <td data-i18n="api_param_branch_id">Identificador único de la sucursal.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h4 data-i18n="api_response_body">Cuerpo de la Respuesta</h4>
+            <p data-i18n="api_returns_branch">Devuelve el objeto de sucursal.</p>
+            <h4>Response — 200 OK</h4>
+            <pre><code>{
+  "id": "c3d4e5f6-a7b8-9012-cdef-345678901234",
+  "company_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "code": "SUC-ALAJUELA",
+  "name": "Sucursal Alajuela",
+  "phone": "+506 2444-5555",
+  "email": "alajuela@comervalley.co.cr",
+  "address": {
+    "province": "Alajuela",
+    "canton": "Alajuela",
+    "district": "Guadalupe",
+    "neighborhood": "",
+    "street": "Avenida Central, 100 metros sur",
+    "details": "Edificio Plaza Comercial, local 5",
+    "postal_code": "20101"
+  }
+}</code></pre>
+            <h4>Response — 404 Not Found</h4>
+            <pre><code>{
+  "error": "branch_not_found",
+  "message": "No se encontró una sucursal con el ID proporcionado."
+}</code></pre>
+          </div>
+        </section>
+
+        <!-- GET /api/v1/branches/by-code/{company_id}/{code} -->
+        <section class="endpoint" id="get-branch-by-code">
+          <div class="endpoint__header">
+            <span class="badge badge--green">GET</span>
+            <code class="endpoint__path">/api/v1/branches/by-code/{company_id}/{code}</code>
+          </div>
+          <div class="endpoint__body">
+            <h3 data-i18n="api_get_branch_by_code_title">Obtener sucursal por código</h3>
+            <p data-i18n="api_get_branch_by_code_desc">Recupera una sucursal utilizando el ID de la empresa y el código de la sucursal. Útil cuando se conoce el código pero no el UUID.</p>
+            <h4 data-i18n="api_path_parameters">Parámetros de Ruta</h4>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="api_th_field">Campo</th>
+                    <th data-i18n="api_th_type">Tipo</th>
+                    <th data-i18n="api_th_required">Requerido</th>
+                    <th data-i18n="api_th_description">Descripción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>company_id</code></td>
+                    <td>uuid</td>
+                    <td data-i18n="api_yes">Sí</td>
+                    <td data-i18n="api_param_company_id">Identificador único de la empresa.</td>
+                  </tr>
+                  <tr>
+                    <td><code>code</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_yes">Sí</td>
+                    <td data-i18n="api_param_branch_code">Código de la sucursal (único dentro de la empresa).</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h4 data-i18n="api_response_body">Cuerpo de la Respuesta</h4>
+            <p data-i18n="api_returns_branch">Devuelve el objeto de sucursal.</p>
+            <h4>Response — 200 OK</h4>
+            <pre><code>{
+  "id": "c3d4e5f6-a7b8-9012-cdef-345678901234",
+  "company_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "code": "SUC-ALAJUELA",
+  "name": "Sucursal Alajuela",
+  "phone": "+506 2444-5555",
+  "email": "alajuela@comervalley.co.cr",
+  "address": {
+    "province": "Alajuela",
+    "canton": "Alajuela",
+    "district": "Guadalupe",
+    "neighborhood": "",
+    "street": "Avenida Central, 100 metros sur",
+    "details": "Edificio Plaza Comercial, local 5",
+    "postal_code": "20101"
+  }
+}</code></pre>
+            <h4>Response — 404 Not Found</h4>
+            <pre><code>{
+  "error": "branch_not_found",
+  "message": "No se encontró una sucursal con el código proporcionado para la empresa indicada."
+}</code></pre>
+          </div>
+        </section>
+
+        <!-- PUT /api/v1/branches/{id} -->
+        <section class="endpoint" id="update-branch">
+          <div class="endpoint__header">
+            <span class="badge badge--yellow">PUT</span>
+            <code class="endpoint__path">/api/v1/branches/{id}</code>
+          </div>
+          <div class="endpoint__body">
+            <h3 data-i18n="api_update_branch_title">Actualizar sucursal (parcial)</h3>
+            <p data-i18n="api_update_branch_desc">Actualiza parcialmente los campos de una sucursal. Solo los campos incluidos en el cuerpo serán modificados.</p>
+            <h4 data-i18n="api_path_parameters">Parámetros de Ruta</h4>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="api_th_field">Campo</th>
+                    <th data-i18n="api_th_type">Tipo</th>
+                    <th data-i18n="api_th_required">Requerido</th>
+                    <th data-i18n="api_th_description">Descripción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>id</code></td>
+                    <td>uuid</td>
+                    <td data-i18n="api_yes">Sí</td>
+                    <td data-i18n="api_param_branch_id">Identificador único de la sucursal.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h4 data-i18n="api_request_body">Cuerpo de la Solicitud</h4>
+            <p data-i18n="api_partial_update_note">Todos los campos son opcionales. Incluya solo los campos que desea modificar.</p>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="api_th_field">Campo</th>
+                    <th data-i18n="api_th_type">Tipo</th>
+                    <th data-i18n="api_th_required">Requerido</th>
+                    <th data-i18n="api_th_description">Descripción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>code</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_branch_code">Código único de la sucursal.</td>
+                  </tr>
+                  <tr>
+                    <td><code>name</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_branch_name">Nombre de la sucursal.</td>
+                  </tr>
+                  <tr>
+                    <td><code>phone</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_phone">Número telefónico.</td>
+                  </tr>
+                  <tr>
+                    <td><code>email</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_email">Correo electrónico.</td>
+                  </tr>
+                  <tr>
+                    <td><code>address</code></td>
+                    <td>object</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_address_replace">Objeto de dirección completo que reemplaza el valor actual.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h4 data-i18n="api_request_example">Request — Ejemplo</h4>
+            <pre><code>{
+  "name": "Sucursal Alajuela Centro",
+  "phone": "+506 2444-6666"
+}</code></pre>
+            <h4>Response — 200 OK</h4>
+            <pre><code>{
+  "id": "c3d4e5f6-a7b8-9012-cdef-345678901234",
+  "company_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "code": "SUC-ALAJUELA",
+  "name": "Sucursal Alajuela Centro",
+  "phone": "+506 2444-6666",
+  "email": "alajuela@comervalley.co.cr",
+  "address": {
+    "province": "Alajuela",
+    "canton": "Alajuela",
+    "district": "Guadalupe",
+    "neighborhood": "",
+    "street": "Avenida Central, 100 metros sur",
+    "details": "Edificio Plaza Comercial, local 5",
+    "postal_code": "20101"
+  }
+}</code></pre>
+            <h4>Response — 404 Not Found</h4>
+            <pre><code>{
+  "error": "branch_not_found",
+  "message": "No se encontró una sucursal con el ID proporcionado."
+}</code></pre>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand"><img src="assets/icon.png" alt="Fides" width="20" height="20">Fides <span class="footer__separator">·</span> <img src="assets/Mercurius.png" alt="Mercurius" width="20" height="20"> Mercurius <span class="footer__separator">·</span> <img src="assets/Mercatus.svg" alt="Mercatus" width="20" height="20"> Mercatus</div>
+      <div class="footer__links">
+        <a href="index.html" class="footer__link" data-i18n="nav_home">Inicio</a>
+        <a href="api-reference.html" class="footer__link" data-i18n="nav_api_reference">Referencia API</a>
+      </div>
+    </div>
+  </footer>
+  <script src="i18n.js"></script>
+  <script src="nav.js"></script>
+</body>
+</html>

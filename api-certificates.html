@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fides — Certificados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo"><img src="assets/icon.png" alt="Fides" width="24" height="24">Fides</a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link" data-i18n="nav_home">Inicio</a>
+        <a href="api-reference.html" class="nav__link nav__link--active" data-i18n="nav_api_reference">Referencia API</a>
+      </div>
+      <div class="lang-switcher">
+        <button data-lang="en" class="lang-switcher__btn" title="English">EN</button>
+        <button data-lang="es" class="lang-switcher__btn" title="Español">ES</button>
+        <button data-lang="fr" class="lang-switcher__btn" title="Français">FR</button>
+        <button data-lang="de" class="lang-switcher__btn" title="Deutsch">DE</button>
+      </div>
+      <button class="nav__hamburger" aria-label="Menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile-menu">
+    <a href="index.html" class="nav__mobile-link" data-i18n="nav_home">Inicio</a>
+    <a href="api-reference.html" class="nav__mobile-link" data-i18n="nav_api_reference">Referencia API</a>
+    <div class="lang-switcher" style="display:flex;justify-content:center;margin:12px 0;">
+      <button data-lang="en" class="lang-switcher__btn" title="English">EN</button>
+      <button data-lang="es" class="lang-switcher__btn" title="Español">ES</button>
+      <button data-lang="fr" class="lang-switcher__btn" title="Français">FR</button>
+      <button data-lang="de" class="lang-switcher__btn" title="Deutsch">DE</button>
+    </div>
+  </div>
+
+  <div class="api-layout">
+    <aside class="api-sidebar" id="sidebar">
+      <div class="api-sidebar__group">
+        <div class="api-sidebar__heading" data-i18n="api_sidebar_title">Referencia API</div>
+        <div class="api-sidebar__links">
+          <div style="padding: 4px 20px; font-size: 12px; color: var(--text-tertiary);">
+            <span data-i18n="api_sidebar_base_url">Base URL:</span>
+            <code style="color: var(--accent-primary);">/api/v1</code>
+          </div>
+        </div>
+      </div>
+      <div class="api-sidebar__group">
+        <a href="index.html#overview" class="api-sidebar__link" data-i18n="api_sidebar_overview">Descripción General</a>
+        <a href="index.html#authentication" class="api-sidebar__link" data-i18n="api_sidebar_authentication">Autenticación</a>
+        <a href="index.html#errors" class="api-sidebar__link" data-i18n="api_sidebar_errors">Errores</a>
+      </div>
+      <div class="api-sidebar__group">
+        <button class="api-sidebar__heading" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('hidden')">
+          <span data-i18n="api_sidebar_public">Endpoints Públicos</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="api-sidebar__links">
+          <a href="api-public.html" class="api-sidebar__link" data-i18n="api_sidebar_health">Salud</a>
+        </div>
+      </div>
+      <div class="api-sidebar__group">
+        <button class="api-sidebar__heading" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('hidden')">
+          <span data-i18n="api_sidebar_protected">Endpoints Protegidos</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="api-sidebar__links">
+          <a href="api-auth.html" class="api-sidebar__link" data-i18n="api_sidebar_auth">Autenticación</a>
+          <a href="api-documents.html" class="api-sidebar__link" data-i18n="api_sidebar_documents">Documentos</a>
+          <a href="api-invoices.html" class="api-sidebar__link" data-i18n="api_sidebar_invoices">Facturas</a>
+          <a href="api-submissions.html" class="api-sidebar__link" data-i18n="api_sidebar_submissions">Envíos</a>
+          <a href="api-companies.html" class="api-sidebar__link" data-i18n="api_sidebar_companies">Empresas</a>
+          <a href="api-branches.html" class="api-sidebar__link" data-i18n="api_sidebar_branches">Sucursales</a>
+          <a href="api-pos.html" class="api-sidebar__link" data-i18n="api_sidebar_pos">Puntos de Venta</a>
+          <a href="api-certificates.html" class="api-sidebar__link api-sidebar__link--active" data-i18n="api_sidebar_certificates">Certificados</a>
+          <a href="api-credentials.html" class="api-sidebar__link" data-i18n="api_sidebar_credentials">Credenciales</a>
+          <a href="api-api-keys.html" class="api-sidebar__link" data-i18n="api_sidebar_api_keys">Llaves API</a>
+          <a href="api-reports.html" class="api-sidebar__link" data-i18n="api_sidebar_reports">Reportes</a>
+          <a href="api-webhooks.html" class="api-sidebar__link" data-i18n="api_sidebar_webhooks">Webhooks</a>
+        </div>
+      </div>
+    </aside>
+    <main class="api-main">
+      <section class="api-section">
+        <h1 data-i18n="certificates_title">Certificados</h1>
+        <p class="api-section__description" data-i18n="certificates_description">Gestionar certificatos digitales para firma XML XAdES.</p>
+      </section>
+
+      <section class="endpoint" id="list-certificates">
+        <div class="endpoint__header">
+          <span class="badge badge--get">GET</span>
+          <code class="endpoint__path">/api/v1/certificates</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="certificates_list_title">Listar Certificados</h3>
+          <p data-i18n="certificates_list_description">Obtiene la lista de todos los certificados digitales registrados para el tenant actual.</p>
+          <h4 data-i18n="api_request_body">Cuerpo de la Solicitud</h4>
+          <p data-i18n="certificates_list_no_body">Este endpoint no requiere cuerpo de solicitud.</p>
+          <h4>Response — 200 OK</h4>
+<pre><code>{
+  "certificates": [
+    {
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "tenant_id": "f0e1d2c3-b4a5-6789-0123-456789abcdef",
+      "alias": "Producción SAT",
+      "subject_name": "CN=EMPRESA SA DE CV, O=EMPRESA SA DE CV, C=MX",
+      "issuer_name": "CN=AC Autorizada FIEL 2024, O=Servicio de Administración Tributaria, C=MX",
+      "serial_number": "1A:2B:3C:4D:5E:6F:70:81:92:A3:B4:C5:D6:E7:F8:09",
+      "not_before": "2024-01-15T00:00:00Z",
+      "not_after": "2026-01-15T23:59:59Z",
+      "active": true,
+      "created_at": "2024-01-20T14:30:00Z"
+    },
+    {
+      "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "tenant_id": "f0e1d2c3-b4a5-6789-0123-456789abcdef",
+      "alias": "Pruebas CSD",
+      "subject_name": "CN=EMPRESA PRUEBAS SA DE CV, O=EMPRESA PRUEBAS SA DE CV, C=MX",
+      "issuer_name": "CN=AC Prueba SAT 2024, O=Servicio de Administración Tributaria, C=MX",
+      "serial_number": "2B:3C:4D:5E:6F:70:81:92:A3:B4:C5:D6:E7:F8:09:10",
+      "not_before": "2024-06-01T00:00:00Z",
+      "not_after": "2025-06-01T23:59:59Z",
+      "active": false,
+      "created_at": "2024-06-10T09:15:00Z"
+    }
+  ]
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="endpoint" id="store-certificate">
+        <div class="endpoint__header">
+          <span class="badge badge--post">POST</span>
+          <code class="endpoint__path">/api/v1/certificates</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="certificates_store_title">Subir Certificado</h3>
+          <p data-i18n="certificates_store_description">Sube un nuevo certificado digital en formato P12/PFX. El archivo debe contener la llave privada y el certificado de cadena completa.</p>
+          <h4 data-i18n="api_request_body">Cuerpo de la Solicitud</h4>
+          <p data-i18n="certificates_store_content_type">Content-Type: multipart/form-data</p>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="api_th_field">Campo</th>
+                  <th data-i18n="api_th_type">Tipo</th>
+                  <th data-i18n="api_th_required">Requerido</th>
+                  <th data-i18n="api_th_description">Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>file</code></td>
+                  <td>binary</td>
+                  <td data-i18n="api_yes">Sí</td>
+                  <td data-i18n="certificates_store_file_desc">Archivo P12/PFX del certificado digital</td>
+                </tr>
+                <tr>
+                  <td><code>password</code></td>
+                  <td>string</td>
+                  <td data-i18n="api_yes">Sí</td>
+                  <td data-i18n="certificates_store_password_desc">Contraseña del archivo P12/PFX</td>
+                </tr>
+                <tr>
+                  <td><code>alias</code></td>
+                  <td>string</td>
+                  <td data-i18n="api_no">No</td>
+                  <td data-i18n="certificates_store_alias_desc">Nombre descriptivo para el certificado. Si se omite, se genera a partir del subject name.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h4>Response — 201 Created</h4>
+<pre><code>{
+  "id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+  "tenant_id": "f0e1d2c3-b4a5-6789-0123-456789abcdef",
+  "alias": "Producción SAT",
+  "subject_name": "CN=EMPRESA SA DE CV, O=EMPRESA SA DE CV, C=MX",
+  "issuer_name": "CN=AC Autorizada FIEL 2024, O=Servicio de Administración Tributaria, C=MX",
+  "serial_number": "1A:2B:3C:4D:5E:6F:70:81:92:A3:B4:C5:D6:E7:F8:09",
+  "not_before": "2024-01-15T00:00:00Z",
+  "not_after": "2026-01-15T23:59:59Z",
+  "active": true,
+  "created_at": "2025-07-13T10:45:00Z"
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="endpoint" id="get-certificate">
+        <div class="endpoint__header">
+          <span class="badge badge--get">GET</span>
+          <code class="endpoint__path">/api/v1/certificates/{id}</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="certificates_get_title">Obtener Certificado</h3>
+          <p data-i18n="certificates_get_description">Obtiene los detalles completos de un certificado digital específico por su ID.</p>
+          <h4 data-i18n="api_path_parameters">Parámetros de Ruta</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="api_th_field">Campo</th>
+                  <th data-i18n="api_th_type">Tipo</th>
+                  <th data-i18n="api_th_required">Requerido</th>
+                  <th data-i18n="api_th_description">Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>id</code></td>
+                  <td>uuid</td>
+                  <td data-i18n="api_yes">Sí</td>
+                  <td data-i18n="certificates_get_id_desc">Identificador único del certificado</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h4>Response — 200 OK</h4>
+<pre><code>{
+  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "tenant_id": "f0e1d2c3-b4a5-6789-0123-456789abcdef",
+  "alias": "Producción SAT",
+  "subject_name": "CN=EMPRESA SA DE CV, O=EMPRESA SA DE CV, C=MX",
+  "issuer_name": "CN=AC Autorizada FIEL 2024, O=Servicio de Administración Tributaria, C=MX",
+  "serial_number": "1A:2B:3C:4D:5E:6F:70:81:92:A3:B4:C5:D6:E7:F8:09",
+  "not_before": "2024-01-15T00:00:00Z",
+  "not_after": "2026-01-15T23:59:59Z",
+  "active": true,
+  "created_at": "2024-01-20T14:30:00Z"
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="endpoint" id="deactivate-certificate">
+        <div class="endpoint__header">
+          <span class="badge badge--delete">DELETE</span>
+          <code class="endpoint__path">/api/v1/certificates/{id}</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="certificates_deactivate_title">Desactivar Certificado</h3>
+          <p data-i18n="certificates_deactivate_description">Desactiva un certificado digital (eliminación lógica). El certificado no se elimina del sistema, sino que se marca como inactivo y ya no puede usarse para firmar documentos.</p>
+          <h4 data-i18n="api_path_parameters">Parámetros de Ruta</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="api_th_field">Campo</th>
+                  <th data-i18n="api_th_type">Tipo</th>
+                  <th data-i18n="api_th_required">Requerido</th>
+                  <th data-i18n="api_th_description">Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>id</code></td>
+                  <td>uuid</td>
+                  <td data-i18n="api_yes">Sí</td>
+                  <td data-i18n="certificates_deactivate_id_desc">Identificador único del certificado a desactivar</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h4>Response — 200 OK</h4>
+<pre><code>{
+  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "active": false,
+  "message": "Certificado desactivado correctamente"
+}</code></pre>
+        </div>
+      </section>
+    </main>
+  </div>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand"><img src="assets/icon.png" alt="Fides" width="20" height="20">Fides <span class="footer__separator">·</span> <img src="assets/Mercurius.png" alt="Mercurius" width="20" height="20"> Mercurius <span class="footer__separator">·</span> <img src="assets/Mercatus.svg" alt="Mercatus" width="20" height="20"> Mercatus</div>
+      <div class="footer__links">
+        <a href="index.html" class="footer__link" data-i18n="nav_home">Inicio</a>
+        <a href="api-reference.html" class="footer__link" data-i18n="nav_api_reference">Referencia API</a>
+      </div>
+    </div>
+  </footer>
+  <script src="i18n.js"></script>
+  <script src="nav.js"></script>
+</body>
+</html>

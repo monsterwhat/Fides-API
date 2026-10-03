@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fides — Empresas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo"><img src="assets/icon.png" alt="Fides" width="24" height="24">Fides</a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link" data-i18n="nav_home">Inicio</a>
+        <a href="api-reference.html" class="nav__link nav__link--active" data-i18n="nav_api_reference">Referencia API</a>
+      </div>
+      <div class="lang-switcher">
+        <button data-lang="en" class="lang-switcher__btn" title="English">EN</button>
+        <button data-lang="es" class="lang-switcher__btn" title="Español">ES</button>
+        <button data-lang="fr" class="lang-switcher__btn" title="Français">FR</button>
+        <button data-lang="de" class="lang-switcher__btn" title="Deutsch">DE</button>
+      </div>
+      <button class="nav__hamburger" aria-label="Menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile-menu">
+    <a href="index.html" class="nav__mobile-link" data-i18n="nav_home">Inicio</a>
+    <a href="api-reference.html" class="nav__mobile-link" data-i18n="nav_api_reference">Referencia API</a>
+    <div class="lang-switcher" style="display:flex;justify-content:center;margin:12px 0;">
+      <button data-lang="en" class="lang-switcher__btn" title="English">EN</button>
+      <button data-lang="es" class="lang-switcher__btn" title="Español">ES</button>
+      <button data-lang="fr" class="lang-switcher__btn" title="Français">FR</button>
+      <button data-lang="de" class="lang-switcher__btn" title="Deutsch">DE</button>
+    </div>
+  </div>
+
+  <div class="api-layout">
+    <aside class="api-sidebar" id="sidebar">
+      <div class="api-sidebar__group">
+        <div class="api-sidebar__heading" data-i18n="api_sidebar_title">Referencia API</div>
+        <div class="api-sidebar__links">
+          <div style="padding: 4px 20px; font-size: 12px; color: var(--text-tertiary);">
+            <span data-i18n="api_sidebar_base_url">Base URL:</span>
+            <code style="color: var(--accent-primary);">/api/v1</code>
+          </div>
+        </div>
+      </div>
+      <div class="api-sidebar__group">
+        <a href="index.html#overview" class="api-sidebar__link" data-i18n="api_sidebar_overview">Descripción General</a>
+        <a href="index.html#authentication" class="api-sidebar__link" data-i18n="api_sidebar_authentication">Autenticación</a>
+        <a href="index.html#errors" class="api-sidebar__link" data-i18n="api_sidebar_errors">Errores</a>
+      </div>
+      <div class="api-sidebar__group">
+        <button class="api-sidebar__heading" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('hidden')">
+          <span data-i18n="api_sidebar_public">Endpoints Públicos</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="api-sidebar__links">
+          <a href="api-public.html" class="api-sidebar__link" data-i18n="api_sidebar_health">Salud</a>
+        </div>
+      </div>
+      <div class="api-sidebar__group">
+        <button class="api-sidebar__heading" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('hidden')">
+          <span data-i18n="api_sidebar_protected">Endpoints Protegidos</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="api-sidebar__links">
+          <a href="api-auth.html" class="api-sidebar__link" data-i18n="api_sidebar_auth">Autenticación</a>
+          <a href="api-documents.html" class="api-sidebar__link" data-i18n="api_sidebar_documents">Documentos</a>
+          <a href="api-invoices.html" class="api-sidebar__link" data-i18n="api_sidebar_invoices">Facturas</a>
+          <a href="api-submissions.html" class="api-sidebar__link" data-i18n="api_sidebar_submissions">Envíos</a>
+          <a href="api-companies.html" class="api-sidebar__link api-sidebar__link--active" data-i18n="api_sidebar_companies">Empresas</a>
+          <a href="api-branches.html" class="api-sidebar__link" data-i18n="api_sidebar_branches">Sucursales</a>
+          <a href="api-pos.html" class="api-sidebar__link" data-i18n="api_sidebar_pos">Puntos de Venta</a>
+          <a href="api-certificates.html" class="api-sidebar__link" data-i18n="api_sidebar_certificates">Certificados</a>
+          <a href="api-credentials.html" class="api-sidebar__link" data-i18n="api_sidebar_credentials">Credenciales</a>
+          <a href="api-api-keys.html" class="api-sidebar__link" data-i18n="api_sidebar_api_keys">Llaves API</a>
+          <a href="api-reports.html" class="api-sidebar__link" data-i18n="api_sidebar_reports">Reportes</a>
+          <a href="api-webhooks.html" class="api-sidebar__link" data-i18n="api_sidebar_webhooks">Webhooks</a>
+        </div>
+      </div>
+    </aside>
+    <main class="api-main">
+      <section class="api-section" id="companies">
+        <div class="api-section__header">
+          <h1 data-i18n="api_companies_title">Empresas</h1>
+          <p class="api-section__desc" data-i18n="api_companies_desc">Gestionar perfiles de empresa para el tenant actual.</p>
+        </div>
+
+        <!-- GET /api/v1/companies -->
+        <section class="endpoint" id="get-company-profile-by-tenant">
+          <div class="endpoint__header">
+            <span class="badge badge--green">GET</span>
+            <code class="endpoint__path">/api/v1/companies</code>
+          </div>
+          <div class="endpoint__body">
+            <h3 data-i18n="api_get_company_by_tenant_title">Obtener perfil de empresa del tenant</h3>
+            <p data-i18n="api_get_company_by_tenant_desc">Recupera el perfil de empresa asociado al tenant autenticado. Cada tenant tiene como máximo un perfil de empresa registrado.</p>
+            <h4 data-i18n="api_path_parameters">Parámetros de Ruta</h4>
+            <p><em data-i18n="api_no_path_params">No aplica. El tenant se infiere del token de autenticación.</em></p>
+            <h4 data-i18n="api_response_body">Cuerpo de la Respuesta</h4>
+            <p data-i18n="api_returns_company_profile">Devuelve el perfil de empresa del tenant.</p>
+            <h4>Response — 200 OK</h4>
+            <pre><code>{
+  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "tenant_id": "f0e1d2c3-b4a5-6789-0abc-def123456789",
+  "trade_name": "Comercializadora del Valle S.A.",
+  "legal_name": "COMERCIALIZADORA DEL VALLE, SOCIEDAD ANÓNIMA",
+  "id_type": "01",
+  "id_number": "3102123456",
+  "activity_code": "46900",
+  "phone": "+506 2222-3333",
+  "email": "facturacion@comervalley.co.cr",
+  "address": {
+    "province": "San José",
+    "canton": "San José",
+    "district": "Carmen",
+    "neighborhood": "Barrio La Merced",
+    "street": "Avenida Central, calle 5",
+    "details": "Edificio Torre Comercial, piso 3, oficina 302",
+    "postal_code": "10101"
+  }
+}</code></pre>
+          </div>
+        </section>
+
+        <!-- POST /api/v1/companies -->
+        <section class="endpoint" id="create-company-profile">
+          <div class="endpoint__header">
+            <span class="badge badge--blue">POST</span>
+            <code class="endpoint__path">/api/v1/companies</code>
+          </div>
+          <div class="endpoint__body">
+            <h3 data-i18n="api_create_company_title">Crear perfil de empresa</h3>
+            <p data-i18n="api_create_company_desc">Crea el perfil de empresa para el tenant actual. Solo se permite un perfil de empresa por tenant. Si ya existe uno, se retornará un error 409 Conflict.</p>
+            <h4 data-i18n="api_request_body">Cuerpo de la Solicitud</h4>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="api_th_field">Campo</th>
+                    <th data-i18n="api_th_type">Tipo</th>
+                    <th data-i18n="api_th_required">Requerido</th>
+                    <th data-i18n="api_th_description">Descripción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>trade_name</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_yes">Sí</td>
+                    <td data-i18n="api_field_trade_name">Nombre comercial de la empresa.</td>
+                  </tr>
+                  <tr>
+                    <td><code>legal_name</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_yes">Sí</td>
+                    <td data-i18n="api_field_legal_name">Razón social completa (nombre legal registrado).</td>
+                  </tr>
+                  <tr>
+                    <td><code>id_type</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_yes">Sí</td>
+                    <td data-i18n-html="api_field_id_type">Tipo de identificación: <code>"01"</code> (Cédula física), <code>"02"</code> (Cédula jurídica), <code>"03"</code> (DIMEX).</td>
+                  </tr>
+                  <tr>
+                    <td><code>id_number</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_yes">Sí</td>
+                    <td data-i18n="api_field_id_number">Número de identificación tributaria.</td>
+                  </tr>
+                  <tr>
+                    <td><code>activity_code</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_activity_code">Código de actividad económica según CABYS (Clasificación de Actividades Económicas por Secciones).</td>
+                  </tr>
+                  <tr>
+                    <td><code>phone</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_phone">Número telefónico de la empresa. Formato internacional recomendado.</td>
+                  </tr>
+                  <tr>
+                    <td><code>email</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_email">Correo electrónico de contacto.</td>
+                  </tr>
+                  <tr>
+                    <td><code>address</code></td>
+                    <td>object</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_address">Objeto con la dirección física de la empresa.</td>
+                  </tr>
+                  <tr>
+                    <td><code>address.province</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_province">Provincia.</td>
+                  </tr>
+                  <tr>
+                    <td><code>address.canton</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_canton">Cantón.</td>
+                  </tr>
+                  <tr>
+                    <td><code>address.district</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_district">Distrito.</td>
+                  </tr>
+                  <tr>
+                    <td><code>address.neighborhood</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_neighborhood">Barrio o conjunto residencial.</td>
+                  </tr>
+                  <tr>
+                    <td><code>address.street</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_street">Dirección exacta: calle, avenida, número.</td>
+                  </tr>
+                  <tr>
+                    <td><code>address.details</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_details">Información adicional de la dirección (piso, oficina, referencias).</td>
+                  </tr>
+                  <tr>
+                    <td><code>address.postal_code</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_postal_code">Código postal.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h4 data-i18n="api_request_example">Request — Ejemplo</h4>
+            <pre><code>{
+  "trade_name": "Comercializadora del Valle S.A.",
+  "legal_name": "COMERCIALIZADORA DEL VALLE, SOCIEDAD ANÓNIMA",
+  "id_type": "02",
+  "id_number": "3102123456",
+  "activity_code": "46900",
+  "phone": "+506 2222-3333",
+  "email": "facturacion@comervalley.co.cr",
+  "address": {
+    "province": "San José",
+    "canton": "San José",
+    "district": "Carmen",
+    "neighborhood": "Barrio La Merced",
+    "street": "Avenida Central, calle 5",
+    "details": "Edificio Torre Comercial, piso 3, oficina 302",
+    "postal_code": "10101"
+  }
+}</code></pre>
+            <h4>Response — 201 Created</h4>
+            <pre><code>{
+  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "tenant_id": "f0e1d2c3-b4a5-6789-0abc-def123456789",
+  "trade_name": "Comercializadora del Valle S.A.",
+  "legal_name": "COMERCIALIZADORA DEL VALLE, SOCIEDAD ANÓNIMA",
+  "id_type": "02",
+  "id_number": "3102123456",
+  "activity_code": "46900",
+  "phone": "+506 2222-3333",
+  "email": "facturacion@comervalley.co.cr",
+  "address": {
+    "province": "San José",
+    "canton": "San José",
+    "district": "Carmen",
+    "neighborhood": "Barrio La Merced",
+    "street": "Avenida Central, calle 5",
+    "details": "Edificio Torre Comercial, piso 3, oficina 302",
+    "postal_code": "10101"
+  }
+}</code></pre>
+            <h4>Response — 409 Conflict</h4>
+            <pre><code>{
+  "error": "company_already_exists",
+  "message": "Este tenant ya tiene un perfil de empresa registrado."
+}</code></pre>
+          </div>
+        </section>
+
+        <!-- GET /api/v1/companies/{id} -->
+        <section class="endpoint" id="get-company-profile">
+          <div class="endpoint__header">
+            <span class="badge badge--green">GET</span>
+            <code class="endpoint__path">/api/v1/companies/{id}</code>
+          </div>
+          <div class="endpoint__body">
+            <h3 data-i18n="api_get_company_title">Obtener empresa por ID</h3>
+            <p data-i18n="api_get_company_desc">Recupera un perfil de empresa específico por su identificador único.</p>
+            <h4 data-i18n="api_path_parameters">Parámetros de Ruta</h4>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="api_th_field">Campo</th>
+                    <th data-i18n="api_th_type">Tipo</th>
+                    <th data-i18n="api_th_required">Requerido</th>
+                    <th data-i18n="api_th_description">Descripción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>id</code></td>
+                    <td>uuid</td>
+                    <td data-i18n="api_yes">Sí</td>
+                    <td data-i18n="api_param_company_id">Identificador único de la empresa.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h4 data-i18n="api_response_body">Cuerpo de la Respuesta</h4>
+            <p data-i18n="api_returns_company_profile">Devuelve el perfil de empresa del tenant.</p>
+            <h4>Response — 200 OK</h4>
+            <pre><code>{
+  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "tenant_id": "f0e1d2c3-b4a5-6789-0abc-def123456789",
+  "trade_name": "Comercializadora del Valle S.A.",
+  "legal_name": "COMERCIALIZADORA DEL VALLE, SOCIEDAD ANÓNIMA",
+  "id_type": "02",
+  "id_number": "3102123456",
+  "activity_code": "46900",
+  "phone": "+506 2222-3333",
+  "email": "facturacion@comervalley.co.cr",
+  "address": {
+    "province": "San José",
+    "canton": "San José",
+    "district": "Carmen",
+    "neighborhood": "Barrio La Merced",
+    "street": "Avenida Central, calle 5",
+    "details": "Edificio Torre Comercial, piso 3, oficina 302",
+    "postal_code": "10101"
+  }
+}</code></pre>
+            <h4>Response — 404 Not Found</h4>
+            <pre><code>{
+  "error": "company_not_found",
+  "message": "No se encontró una empresa con el ID proporcionado."
+}</code></pre>
+          </div>
+        </section>
+
+        <!-- PUT /api/v1/companies/{id} -->
+        <section class="endpoint" id="update-company-profile">
+          <div class="endpoint__header">
+            <span class="badge badge--yellow">PUT</span>
+            <code class="endpoint__path">/api/v1/companies/{id}</code>
+          </div>
+          <div class="endpoint__body">
+            <h3 data-i18n="api_update_company_title">Actualizar empresa (parcial)</h3>
+            <p data-i18n="api_update_company_desc">Actualiza parcialmente los campos de un perfil de empresa. Solo los campos incluidos en el cuerpo de la solicitud serán modificados. Los campos omitidos mantienen su valor actual.</p>
+            <h4 data-i18n="api_path_parameters">Parámetros de Ruta</h4>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="api_th_field">Campo</th>
+                    <th data-i18n="api_th_type">Tipo</th>
+                    <th data-i18n="api_th_required">Requerido</th>
+                    <th data-i18n="api_th_description">Descripción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>id</code></td>
+                    <td>uuid</td>
+                    <td data-i18n="api_yes">Sí</td>
+                    <td data-i18n="api_param_company_id">Identificador único de la empresa.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h4 data-i18n="api_request_body">Cuerpo de la Solicitud</h4>
+            <p data-i18n="api_partial_update_note">Todos los campos son opcionales. Incluya solo los campos que desea modificar.</p>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="api_th_field">Campo</th>
+                    <th data-i18n="api_th_type">Tipo</th>
+                    <th data-i18n="api_th_required">Requerido</th>
+                    <th data-i18n="api_th_description">Descripción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>trade_name</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_trade_name">Nombre comercial de la empresa.</td>
+                  </tr>
+                  <tr>
+                    <td><code>legal_name</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_legal_name">Razón social completa.</td>
+                  </tr>
+                  <tr>
+                    <td><code>id_type</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n-html="api_field_id_type">Tipo de identificación: <code>"01"</code>, <code>"02"</code>, o <code>"03"</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>id_number</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_id_number">Número de identificación tributaria.</td>
+                  </tr>
+                  <tr>
+                    <td><code>activity_code</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_activity_code">Código CABYS de actividad económica.</td>
+                  </tr>
+                  <tr>
+                    <td><code>phone</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_phone">Número telefónico.</td>
+                  </tr>
+                  <tr>
+                    <td><code>email</code></td>
+                    <td>string</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_email">Correo electrónico de contacto.</td>
+                  </tr>
+                  <tr>
+                    <td><code>address</code></td>
+                    <td>object</td>
+                    <td data-i18n="api_no">No</td>
+                    <td data-i18n="api_field_address_replace">Objeto de dirección completo que reemplaza el valor actual.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h4 data-i18n="api_request_example">Request — Ejemplo</h4>
+            <pre><code>{
+  "phone": "+506 2222-4444",
+  "email": "nuevo-contacto@comervalley.co.cr"
+}</code></pre>
+            <h4>Response — 200 OK</h4>
+            <pre><code>{
+  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "tenant_id": "f0e1d2c3-b4a5-6789-0abc-def123456789",
+  "trade_name": "Comercializadora del Valle S.A.",
+  "legal_name": "COMERCIALIZADORA DEL VALLE, SOCIEDAD ANÓNIMA",
+  "id_type": "02",
+  "id_number": "3102123456",
+  "activity_code": "46900",
+  "phone": "+506 2222-4444",
+  "email": "nuevo-contacto@comervalley.co.cr",
+  "address": {
+    "province": "San José",
+    "canton": "San José",
+    "district": "Carmen",
+    "neighborhood": "Barrio La Merced",
+    "street": "Avenida Central, calle 5",
+    "details": "Edificio Torre Comercial, piso 3, oficina 302",
+    "postal_code": "10101"
+  }
+}</code></pre>
+            <h4>Response — 404 Not Found</h4>
+            <pre><code>{
+  "error": "company_not_found",
+  "message": "No se encontró una empresa con el ID proporcionado."
+}</code></pre>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand"><img src="assets/icon.png" alt="Fides" width="20" height="20">Fides <span class="footer__separator">·</span> <img src="assets/Mercurius.png" alt="Mercurius" width="20" height="20"> Mercurius <span class="footer__separator">·</span> <img src="assets/Mercatus.svg" alt="Mercatus" width="20" height="20"> Mercatus</div>
+      <div class="footer__links">
+        <a href="index.html" class="footer__link" data-i18n="nav_home">Inicio</a>
+        <a href="api-reference.html" class="footer__link" data-i18n="nav_api_reference">Referencia API</a>
+      </div>
+    </div>
+  </footer>
+  <script src="i18n.js"></script>
+  <script src="nav.js"></script>
+</body>
+</html>

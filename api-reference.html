@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fides — API Reference</title>
+  <meta name="description" content="Documentación completa de la API de facturación electrónica Fides. 38 endpoints para Hacienda de Costa Rica.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="assets/icon.png" alt="Fides" width="24" height="24">
+        Fides
+      </a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link" data-i18n="nav_home">Inicio</a>
+        <a href="api-reference.html" class="nav__link nav__link--active" data-i18n="nav_api_reference">Referencia API</a>
+      </div>
+      <div class="lang-switcher">
+        <button data-lang="en" class="lang-switcher__btn" title="English">EN</button>
+        <button data-lang="es" class="lang-switcher__btn" title="Español">ES</button>
+        <button data-lang="fr" class="lang-switcher__btn" title="Français">FR</button>
+        <button data-lang="de" class="lang-switcher__btn" title="Deutsch">DE</button>
+      </div>
+      <button class="nav__hamburger" aria-label="Menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile-menu">
+    <a href="index.html" class="nav__mobile-link" data-i18n="nav_home">Inicio</a>
+    <a href="api-reference.html" class="nav__mobile-link" data-i18n="nav_api_reference">Referencia API</a>
+    <div class="lang-switcher" style="display:flex;justify-content:center;margin:12px 0;">
+      <button data-lang="en" class="lang-switcher__btn" title="English">EN</button>
+      <button data-lang="es" class="lang-switcher__btn" title="Español">ES</button>
+      <button data-lang="fr" class="lang-switcher__btn" title="Français">FR</button>
+      <button data-lang="de" class="lang-switcher__btn" title="Deutsch">DE</button>
+    </div>
+  </div>
+
+  <!-- Layout: Sidebar + Content -->
+  <div class="api-layout">
+
+    <!-- Sidebar -->
+    <aside class="api-sidebar" id="sidebar">
+      <div class="api-sidebar__group">
+        <div class="api-sidebar__heading" data-i18n="api_sidebar_title">Referencia API</div>
+        <div class="api-sidebar__links">
+          <div style="padding: 4px 20px; font-size: 12px; color: var(--text-tertiary);">
+            <span data-i18n="api_sidebar_base_url">Base URL:</span>
+            <code style="color: var(--accent-primary);">/api/v1</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-sidebar__group">
+        <a href="#overview" class="api-sidebar__link api-sidebar__link--active" data-i18n="api_sidebar_overview">Descripción General</a>
+        <a href="#authentication" class="api-sidebar__link" data-i18n="api_sidebar_authentication">Autenticación</a>
+        <a href="#errors" class="api-sidebar__link" data-i18n="api_sidebar_errors">Errores</a>
+      </div>
+
+      <div class="api-sidebar__group">
+        <button class="api-sidebar__heading" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('hidden')">
+          <span data-i18n="api_sidebar_public">Endpoints Públicos</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="api-sidebar__links">
+          <a href="api-public.html#health" class="api-sidebar__link" data-i18n="api_sidebar_health">Salud</a>
+          <a href="api-public.html#validate" class="api-sidebar__link" data-i18n="api_sidebar_validation">Validación</a>
+        </div>
+      </div>
+
+      <div class="api-sidebar__group">
+        <button class="api-sidebar__heading" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('hidden')">
+          <span data-i18n="api_sidebar_protected">Endpoints Protegidos</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="api-sidebar__links">
+          <a href="api-auth.html" class="api-sidebar__link" data-i18n="api_sidebar_auth">Autenticación</a>
+          <a href="api-documents.html" class="api-sidebar__link" data-i18n="api_sidebar_documents">Documentos</a>
+          <a href="api-invoices.html" class="api-sidebar__link" data-i18n="api_sidebar_invoices">Facturas</a>
+          <a href="api-submissions.html" class="api-sidebar__link" data-i18n="api_sidebar_submissions">Envíos</a>
+          <a href="api-companies.html" class="api-sidebar__link" data-i18n="api_sidebar_companies">Empresas</a>
+          <a href="api-branches.html" class="api-sidebar__link" data-i18n="api_sidebar_branches">Sucursales</a>
+          <a href="api-pos.html" class="api-sidebar__link" data-i18n="api_sidebar_pos">Puntos de Venta</a>
+          <a href="api-certificates.html" class="api-sidebar__link" data-i18n="api_sidebar_certificates">Certificados</a>
+          <a href="api-credentials.html" class="api-sidebar__link" data-i18n="api_sidebar_credentials">Credenciales</a>
+          <a href="api-api-keys.html" class="api-sidebar__link" data-i18n="api_sidebar_api_keys">Llaves API</a>
+          <a href="api-reports.html" class="api-sidebar__link" data-i18n="api_sidebar_reports">Reportes</a>
+          <a href="api-webhooks.html" class="api-sidebar__link" data-i18n="api_sidebar_webhooks">Webhooks</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="api-main">
+
+      <!-- Overview -->
+      <section id="overview">
+        <h1 data-i18n="api_section_overview">Descripción General</h1>
+        <p data-i18n-html="api_section_overview_desc">Fides es una API de facturación electrónica sin estado para Hacienda de Costa Rica. Todos los endpoints tienen el prefijo <code>/api/v1</code>.</p>
+
+        <h2 data-i18n="api_section_response_format">Formato de Respuesta</h2>
+        <p data-i18n="api_section_response_format_desc">Todas las respuestas siguen un sobre JSON estándar:</p>
+        <pre><code>{
+  "success": true,
+  "data": { ... },
+  "error": null
+}</code></pre>
+
+        <h2 data-i18n="api_section_pagination">Paginación</h2>
+        <p data-i18n-html="api_section_pagination_desc">Los endpoints de lista devuelven resultados paginados con campos <code>total</code>, <code>page</code> y <code>page_size</code>.</p>
+      </section>
+
+      <!-- Authentication -->
+      <section id="authentication">
+        <h1 data-i18n="api_section_authentication">Autenticación</h1>
+        <p data-i18n="api_section_authentication_desc">Fides soporta dos métodos de autenticación:</p>
+
+        <h3 data-i18n="api_auth_method_api_key">Llave API</h3>
+        <p data-i18n-html="api_auth_method_api_key_desc">Incluya la llave API en el header <code>Authorization</code> como token Bearer.</p>
+        <pre><code>Authorization: Bearer fides_xxxxxxxxxxxxxxxx</code></pre>
+
+        <h3 data-i18n="api_auth_method_jwt">Token JWT</h3>
+        <p data-i18n-html="api_auth_method_jwt_desc">Obtenga un JWT mediante el endpoint <code>/auth/token</code> e inclúyalo en el header <code>Authorization</code>.</p>
+        <pre><code>Authorization: Bearer eyJhbGciOiJIUzI1NiIs...</code></pre>
+      </section>
+
+      <!-- Errors -->
+      <section id="errors">
+        <h1 data-i18n="api_section_errors">Errores</h1>
+        <p data-i18n="api_section_errors_desc">Todos los errores devuelven una respuesta JSON estructurada:</p>
+        <pre><code>{
+  "success": false,
+  "data": null,
+  "error": {
+    "code": "VALIDATION_FAILED",
+    "message": "Invalid input",
+    "timestamp": "2025-01-01T00:00:00Z",
+    "correlation_id": "uuid",
+    "details": []
+  }
+}</code></pre>
+      </section>
+
+      <!-- Quick Reference Table -->
+      <section id="quick-reference">
+        <h2 data-i18n="api_public_quick_ref">Referencia Rápida</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th data-i18n="api_th_method">Método</th>
+                <th data-i18n="api_th_path">Ruta</th>
+                <th data-i18n="api_th_description">Descripción</th>
+                <th data-i18n="api_th_required">Auth</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Public -->
+              <tr><td colspan="4"><strong data-i18n="api_sidebar_public">Endpoints Públicos</strong></td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/health</code></td><td data-i18n="qr_health_desc">Estado del servidor</td><td>—</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/ready</code></td><td data-i18n="qr_ready_desc">Verificación de preparación</td><td>—</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/auth/token</code></td><td data-i18n="qr_token_desc">Obtener token de acceso</td><td>—</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/auth/register</code></td><td data-i18n="qr_register_desc">Registrar usuario</td><td>—</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/validate</code></td><td data-i18n="qr_validate_desc">Validar XML</td><td>—</td></tr>
+
+              <!-- Auth -->
+              <tr><td colspan="4"><strong data-i18n="api_sidebar_auth">Autenticación</strong></td></tr>
+              <tr><td><span class="badge badge--yellow">PUT</span></td><td><code>/auth/password</code></td><td data-i18n="qr_change_password_desc">Cambiar contraseña</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/auth/revoke</code></td><td data-i18n="qr_revoke_token_desc">Revocar token</td><td>✓</td></tr>
+
+              <!-- Documents -->
+              <tr><td colspan="4"><strong data-i18n="api_sidebar_documents">Documentos</strong></td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/documents</code></td><td data-i18n="qr_list_documents_desc">Listar documentos</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/documents</code></td><td data-i18n="qr_generate_document_desc">Generar documento</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/documents/{id}</code></td><td data-i18n="qr_document_status_desc">Estado del documento</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/documents/{id}/sign</code></td><td data-i18n="qr_sign_document_desc">Firmar documento</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/documents/{id}/cancel</code></td><td data-i18n="qr_cancel_document_desc">Cancelar documento</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/documents/{id}/finalize</code></td><td data-i18n="qr_finalize_draft_desc">Finalizar borrador</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/documents/draft</code></td><td data-i18n="qr_create_draft_desc">Crear borrador</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/documents/pending-contingency</code></td><td data-i18n="qr_pending_drafts_desc">Borradores pendientes</td><td>✓</td></tr>
+
+              <!-- Invoices -->
+              <tr><td colspan="4"><strong data-i18n="api_sidebar_invoices">Facturas</strong></td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/invoices</code></td><td data-i18n="qr_list_invoices_desc">Listar facturas</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/invoices</code></td><td data-i18n="qr_create_invoice_desc">Crear factura</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/invoices/{id}</code></td><td data-i18n="qr_get_invoice_desc">Obtener factura</td><td>✓</td></tr>
+
+              <!-- Submissions -->
+              <tr><td colspan="4"><strong data-i18n="api_sidebar_submissions">Envíos</strong></td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/submissions</code></td><td data-i18n="qr_list_submissions_desc">Listar envíos</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/submissions</code></td><td data-i18n="qr_submit_desc">Enviar a Hacienda</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/submissions/{id}</code></td><td data-i18n="qr_submission_status_desc">Estado del envío</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/submissions/{id}/retry</code></td><td data-i18n="qr_retry_submission_desc">Reintentar envío</td><td>✓</td></tr>
+
+              <!-- Companies -->
+              <tr><td colspan="4"><strong data-i18n="api_sidebar_companies">Empresas</strong></td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/companies</code></td><td data-i18n="qr_get_company_desc">Obtener empresa</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/companies</code></td><td data-i18n="qr_create_company_desc">Crear empresa</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/companies/{id}</code></td><td data-i18n="qr_company_by_id_desc">Empresa por ID</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--yellow">PUT</span></td><td><code>/companies/{id}</code></td><td data-i18n="qr_update_company_desc">Actualizar empresa</td><td>✓</td></tr>
+
+              <!-- Branches -->
+              <tr><td colspan="4"><strong data-i18n="api_sidebar_branches">Sucursales</strong></td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/companies/{id}/branches</code></td><td data-i18n="qr_list_branches_desc">Listar sucursales</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/companies/{id}/branches</code></td><td data-i18n="qr_create_branch_desc">Crear sucursal</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/branches/{id}</code></td><td data-i18n="qr_get_branch_desc">Obtener sucursal</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--yellow">PUT</span></td><td><code>/branches/{id}</code></td><td data-i18n="qr_update_branch_desc">Actualizar sucursal</td><td>✓</td></tr>
+
+              <!-- Points of Sale -->
+              <tr><td colspan="4"><strong data-i18n="api_sidebar_pos">Puntos de Venta</strong></td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/branches/{id}/points-of-sale</code></td><td data-i18n="qr_list_pos_desc">Listar PV</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/branches/{id}/points-of-sale</code></td><td data-i18n="qr_create_pos_desc">Crear PV</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/points-of-sale/{id}</code></td><td data-i18n="qr_get_pos_desc">Obtener PV</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--yellow">PUT</span></td><td><code>/points-of-sale/{id}</code></td><td data-i18n="qr_update_pos_desc">Actualizar PV</td><td>✓</td></tr>
+
+              <!-- Certificates -->
+              <tr><td colspan="4"><strong data-i18n="api_sidebar_certificates">Certificados</strong></td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/certificates</code></td><td data-i18n="qr_list_certificates_desc">Listar certificados</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/certificates</code></td><td data-i18n="qr_upload_certificate_desc">Subir certificado</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/certificates/{id}</code></td><td data-i18n="qr_get_certificate_desc">Obtener certificado</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--red">DELETE</span></td><td><code>/certificates/{id}</code></td><td data-i18n="qr_deactivate_certificate_desc">Desactivar certificado</td><td>✓</td></tr>
+
+              <!-- Credentials -->
+              <tr><td colspan="4"><strong data-i18n="api_sidebar_credentials">Credenciales</strong></td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/credentials</code></td><td data-i18n="qr_credentials_status_desc">Estado de credenciales</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/credentials</code></td><td data-i18n="qr_configure_credentials_desc">Configurar credenciales</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--yellow">PUT</span></td><td><code>/credentials</code></td><td data-i18n="qr_update_credentials_desc">Actualizar credenciales</td><td>✓</td></tr>
+
+              <!-- API Keys -->
+              <tr><td colspan="4"><strong data-i18n="api_sidebar_api_keys">Llaves API</strong></td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/api-keys</code></td><td data-i18n="qr_create_api_key_desc">Crear llave API</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/api-keys</code></td><td data-i18n="qr_list_api_keys_desc">Listar llaves API</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--red">DELETE</span></td><td><code>/api-keys/{id}</code></td><td data-i18n="qr_revoke_api_key_desc">Revocar llave API</td><td>✓</td></tr>
+
+              <!-- Reports -->
+              <tr><td colspan="4"><strong data-i18n="api_sidebar_reports">Reportes</strong></td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/reports/summary</code></td><td data-i18n="qr_sales_summary_desc">Resumen de ventas</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/reports/sales-by-period</code></td><td data-i18n="qr_sales_by_period_desc">Ventas por período</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/reports/sales-by-receiver</code></td><td data-i18n="qr_sales_by_receiver_desc">Ventas por receptor</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/reports/sales-by-activity</code></td><td data-i18n="qr_sales_by_activity_desc">Ventas por actividad</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/reports/tax-summary</code></td><td data-i18n="qr_tax_summary_desc">Resumen de impuestos</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/reports/vouchers-by-status</code></td><td data-i18n="qr_vouchers_by_status_desc">Comprobantes por estado</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/reports/receiver-messages</code></td><td data-i18n="qr_receiver_messages_desc">Mensajes del receptor</td><td>✓</td></tr>
+
+              <!-- Webhooks -->
+              <tr><td colspan="4"><strong data-i18n="api_sidebar_webhooks">Webhooks</strong></td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/webhooks</code></td><td data-i18n="qr_list_webhooks_desc">Listar webhooks</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/webhooks</code></td><td data-i18n="qr_create_webhook_desc">Crear webhook</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--red">DELETE</span></td><td><code>/webhooks/{id}</code></td><td data-i18n="qr_delete_webhook_desc">Eliminar webhook</td><td>✓</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/webhooks/{id}/delivery-logs</code></td><td data-i18n="qr_delivery_logs_desc">Logs de entrega</td><td>✓</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/icon.png" alt="Fides" width="20" height="20">
+        Fides
+        <span class="footer__separator">·</span>
+        <img src="assets/Mercurius.png" alt="Mercurius" width="20" height="20">
+        Mercurius
+        <span class="footer__separator">·</span>
+        <img src="assets/Mercatus.svg" alt="Mercatus" width="20" height="20">
+        Mercatus
+      </div>
+      <div class="footer__links">
+        <a href="index.html" class="footer__link" data-i18n="nav_home">Inicio</a>
+        <a href="api-reference.html" class="footer__link" data-i18n="nav_api_reference">Referencia API</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="nav.js"></script>
+</body>
+</html>

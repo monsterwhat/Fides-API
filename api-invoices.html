@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fides — Facturas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="assets/icon.png" alt="Fides" width="24" height="24">Fides
+      </a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link" data-i18n="nav_home">Inicio</a>
+        <a href="api-reference.html" class="nav__link nav__link--active" data-i18n="nav_api_reference">Referencia API</a>
+      </div>
+      <div class="lang-switcher">
+        <button data-lang="en" class="lang-switcher__btn" title="English">EN</button>
+        <button data-lang="es" class="lang-switcher__btn" title="Español">ES</button>
+        <button data-lang="fr" class="lang-switcher__btn" title="Français">FR</button>
+        <button data-lang="de" class="lang-switcher__btn" title="Deutsch">DE</button>
+      </div>
+      <button class="nav__hamburger" aria-label="Menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile-menu">
+    <a href="index.html" class="nav__mobile-link" data-i18n="nav_home">Inicio</a>
+    <a href="api-reference.html" class="nav__mobile-link" data-i18n="nav_api_reference">Referencia API</a>
+    <div class="lang-switcher" style="display:flex;justify-content:center;margin:12px 0;">
+      <button data-lang="en" class="lang-switcher__btn" title="English">EN</button>
+      <button data-lang="es" class="lang-switcher__btn" title="Español">ES</button>
+      <button data-lang="fr" class="lang-switcher__btn" title="Français">FR</button>
+      <button data-lang="de" class="lang-switcher__btn" title="Deutsch">DE</button>
+    </div>
+  </div>
+
+  <div class="api-layout">
+    <aside class="api-sidebar" id="sidebar">
+      <div class="api-sidebar__group">
+        <div class="api-sidebar__heading" data-i18n="api_sidebar_title">Referencia API</div>
+        <div class="api-sidebar__links">
+          <div style="padding: 4px 20px; font-size: 12px; color: var(--text-tertiary);">
+            <span data-i18n="api_sidebar_base_url">Base URL:</span>
+            <code style="color: var(--accent-primary);">/api/v1</code>
+          </div>
+        </div>
+      </div>
+      <div class="api-sidebar__group">
+        <a href="index.html#overview" class="api-sidebar__link" data-i18n="api_sidebar_overview">Descripción General</a>
+        <a href="index.html#authentication" class="api-sidebar__link" data-i18n="api_sidebar_authentication">Autenticación</a>
+        <a href="index.html#errors" class="api-sidebar__link" data-i18n="api_sidebar_errors">Errores</a>
+      </div>
+      <div class="api-sidebar__group">
+        <button class="api-sidebar__heading" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('hidden')">
+          <span data-i18n="api_sidebar_public">Endpoints Públicos</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="api-sidebar__links">
+          <a href="api-public.html" class="api-sidebar__link" data-i18n="api_sidebar_health">Salud</a>
+        </div>
+      </div>
+      <div class="api-sidebar__group">
+        <button class="api-sidebar__heading" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('hidden')">
+          <span data-i18n="api_sidebar_protected">Endpoints Protegidos</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="api-sidebar__links">
+          <a href="api-auth.html" class="api-sidebar__link" data-i18n="api_sidebar_auth">Autenticación</a>
+          <a href="api-documents.html" class="api-sidebar__link" data-i18n="api_sidebar_documents">Documentos</a>
+          <a href="api-invoices.html" class="api-sidebar__link api-sidebar__link--active" data-i18n="api_sidebar_invoices">Facturas</a>
+          <a href="api-submissions.html" class="api-sidebar__link" data-i18n="api_sidebar_submissions">Envíos</a>
+          <a href="api-companies.html" class="api-sidebar__link" data-i18n="api_sidebar_companies">Empresas</a>
+          <a href="api-branches.html" class="api-sidebar__link" data-i18n="api_sidebar_branches">Sucursales</a>
+          <a href="api-pos.html" class="api-sidebar__link" data-i18n="api_sidebar_pos">Puntos de Venta</a>
+          <a href="api-certificates.html" class="api-sidebar__link" data-i18n="api_sidebar_certificates">Certificados</a>
+          <a href="api-credentials.html" class="api-sidebar__link" data-i18n="api_sidebar_credentials">Credenciales</a>
+          <a href="api-api-keys.html" class="api-sidebar__link" data-i18n="api_sidebar_api_keys">Llaves API</a>
+          <a href="api-reports.html" class="api-sidebar__link" data-i18n="api_sidebar_reports">Reportes</a>
+          <a href="api-webhooks.html" class="api-sidebar__link" data-i18n="api_sidebar_webhooks">Webhooks</a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="api-main">
+      <h1 data-i18n="api_invoices_title">Facturas</h1>
+      <p class="api-main__desc" data-i18n="api_invoices_description">Gestionar facturas electrónicas.</p>
+
+      <!-- GET /api/v1/invoices -->
+      <section class="endpoint" id="endpoint-list-invoices">
+        <div class="endpoint__header">
+          <span class="badge badge--green">GET</span>
+          <code class="endpoint__path">/api/v1/invoices</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_list_invoices_title">Listar facturas (paginado)</h3>
+          <p data-i18n="api_list_invoices_desc">Devuelve una lista paginada de todas las facturas del tenant autenticado.</p>
+
+          <h4 data-i18n="api_query_params">Parámetros de Consulta</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="api_th_field">Campo</th>
+                  <th data-i18n="api_th_type">Tipo</th>
+                  <th data-i18n="api_th_required">Requerido</th>
+                  <th data-i18n="api_th_description">Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>page</code></td>
+                  <td>integer</td>
+                  <td data-i18n="api_optional">No</td>
+                  <td data-i18n-html="api_list_invoices_param_page">Número de página. Por defecto: <code>1</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>page_size</code></td>
+                  <td>integer</td>
+                  <td data-i18n="api_optional">No</td>
+                  <td data-i18n-html="api_list_invoices_param_page_size">Cantidad de elementos por página. Máximo: <code>100</code>. Por defecto: <code>20</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>status</code></td>
+                  <td>string</td>
+                  <td data-i18n="api_optional">No</td>
+                  <td data-i18n-html="api_list_invoices_param_status">Filtrar por estado de la factura. Valores válidos: <code>draft</code>, <code>signed</code>, <code>submitted</code>, <code>accepted</code>, <code>rejected</code>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Response — <span data-i18n="api_status_200">200 OK</span></h4>
+          <pre><code>{
+  "total": 47,
+  "page": 1,
+  "page_size": 20,
+  "items": [
+    {
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "doc_type": "01",
+      "key": "5061234567890123456789000000101000000001000000001",
+      "sequential": "0000000001",
+      "date": "2025-06-15T10:30:00-06:00",
+      "seller_name": "Mi Empresa S.A.",
+      "seller_id_number": "3101123456",
+      "seller_id_type": "02",
+      "receiver_name": "Juan Pérez",
+      "receiver_id_number": "112340567",
+      "receiver_id_type": "01",
+      "receiver_email": "juan@ejemplo.com",
+      "activity_code": "821100",
+      "total_service": 15000.00,
+      "total_tax": 1950.00,
+      "total_gross": 16950.00,
+      "currency": "CRC",
+      "status": "signed",
+      "created_at": "2025-06-15T10:30:00-06:00",
+      "updated_at": "2025-06-15T10:30:05-06:00"
+    },
+    {
+      "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "doc_type": "01",
+      "key": "5061234567890123456789000000101000000001000000002",
+      "sequential": "0000000002",
+      "date": "2025-06-16T14:00:00-06:00",
+      "seller_name": "Mi Empresa S.A.",
+      "seller_id_number": "3101123456",
+      "seller_id_type": "02",
+      "receiver_name": "María López",
+      "receiver_id_number": "206780901",
+      "receiver_id_type": "01",
+      "receiver_email": "maria@ejemplo.com",
+      "activity_code": "821100",
+      "total_service": 27500.00,
+      "total_tax": 3575.00,
+      "total_gross": 31075.00,
+      "currency": "CRC",
+      "status": "submitted",
+      "created_at": "2025-06-16T14:00:00-06:00",
+      "updated_at": "2025-06-16T14:00:10-06:00"
+    }
+  ]
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- POST /api/v1/invoices -->
+      <section class="endpoint" id="endpoint-create-invoice">
+        <div class="endpoint__header">
+          <span class="badge badge--blue">POST</span>
+          <code class="endpoint__path">/api/v1/invoices</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_create_invoice_title">Crear una nueva factura</h3>
+          <p data-i18n-html="api_create_invoice_desc">Crea una nueva factura electrónica. El servidor genera el XML, calcula el SHA-256 y almacena el documento en estado <code>draft</code>.</p>
+
+          <h4 data-i18n="api_request_body">Cuerpo de la Solicitud</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="api_th_field">Campo</th>
+                  <th data-i18n="api_th_type">Tipo</th>
+                  <th data-i18n="api_th_required">Requerido</th>
+                  <th data-i18n="api_th_description">Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>doc_type</code></td>
+                  <td>string</td>
+                  <td data-i18n="api_required">Sí</td>
+                  <td data-i18n-html="api_create_invoice_field_doc_type">Tipo de documento. Use <code>"01"</code> para factura electrónica.</td>
+                </tr>
+                <tr>
+                  <td><code>key</code></td>
+                  <td>string</td>
+                  <td data-i18n="api_required">Sí</td>
+                  <td data-i18n="api_create_invoice_field_key">Clave numérica de 50 dígitos que identifica el documento ante Hacienda.</td>
+                </tr>
+                <tr>
+                  <td><code>sequential</code></td>
+                  <td>string</td>
+                  <td data-i18n="api_required">Sí</td>
+                  <td data-i18n="api_create_invoice_field_sequential">Número consecutivo de 10 dígitos. Debe ser único por tipo de documento y sucursal.</td>
+                </tr>
+                <tr>
+                  <td><code>date</code></td>
+                  <td>string (ISO 8601)</td>
+                  <td data-i18n="api_required">Sí</td>
+                  <td data-i18n="api_create_invoice_field_date">Fecha y hora de emisión del documento con offset de zona horaria.</td>
+                </tr>
+                <tr>
+                  <td><code>seller_name</code></td>
+                  <td>string</td>
+                  <td data-i18n="api_required">Sí</td>
+                  <td data-i18n="api_create_invoice_field_seller_name">Nombre o razón social del emisor.</td>
+                </tr>
+                <tr>
+                  <td><code>seller_id_number</code></td>
+                  <td>string</td>
+                  <td data-i18n="api_required">Sí</td>
+                  <td data-i18n="api_create_invoice_field_seller_id_number">Número de identificación del emisor (cédula jurídica, física, etc.).</td>
+                </tr>
+                <tr>
+                  <td><code>seller_id_type</code></td>
+                  <td>string</td>
+                  <td data-i18n="api_required">Sí</td>
+                  <td data-i18n-html="api_create_invoice_field_seller_id_type">Tipo de identificación del emisor: <code>"01"</code> = cédula física, <code>"02"</code> = cédula jurídica, <code>"03"</code> = dimex, <code>"04"</code> = pasaporte.</td>
+                </tr>
+                <tr>
+                  <td><code>receiver_name</code></td>
+                  <td>string</td>
+                  <td data-i18n="api_required">Sí</td>
+                  <td data-i18n="api_create_invoice_field_receiver_name">Nombre o razón social del receptor.</td>
+                </tr>
+                <tr>
+                  <td><code>receiver_id_number</code></td>
+                  <td>string</td>
+                  <td data-i18n="api_required">Sí</td>
+                  <td data-i18n="api_create_invoice_field_receiver_id_number">Número de identificación del receptor.</td>
+                </tr>
+                <tr>
+                  <td><code>receiver_id_type</code></td>
+                  <td>string</td>
+                  <td data-i18n="api_required">Sí</td>
+                  <td data-i18n-html="api_create_invoice_field_receiver_id_type">Tipo de identificación del receptor. Mismos valores que <code>seller_id_type</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>receiver_email</code></td>
+                  <td>string</td>
+                  <td data-i18n="api_required">Sí</td>
+                  <td data-i18n="api_create_invoice_field_receiver_email">Correo electrónico del receptor. Hacienda envía la factura a esta dirección.</td>
+                </tr>
+                <tr>
+                  <td><code>activity_code</code></td>
+                  <td>string</td>
+                  <td data-i18n="api_required">Sí</td>
+                  <td data-i18n="api_create_invoice_field_activity_code">Código de actividad económica según el catálogo CNAE de Hacienda.</td>
+                </tr>
+                <tr>
+                  <td><code>details</code></td>
+                  <td>array</td>
+                  <td data-i18n="api_required">Sí</td>
+                  <td data-i18n-html="api_create_invoice_field_details">Lista de líneas de detalle. Cada elemento incluye: <code>quantity</code> (number), <code>unit_code</code> (string), <code>unit_price</code> (number), <code>description</code> (string), <code>subtotal</code> (number), <code>tax_rate</code> (number, porcentaje), <code>tax_amount</code> (number).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Response — <span data-i18n="api_status_201">201 Created</span></h4>
+          <pre><code>{
+  "id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+  "doc_type": "01",
+  "key": "5061234567890123456789000000101000000001000000003",
+  "sequential": "0000000003",
+  "date": "2025-06-17T09:15:00-06:00",
+  "seller_name": "Mi Empresa S.A.",
+  "seller_id_number": "3101123456",
+  "seller_id_type": "02",
+  "receiver_name": "Carlos Ramírez",
+  "receiver_id_number": "109870654",
+  "receiver_id_type": "01",
+  "receiver_email": "carlos@ejemplo.com",
+  "activity_code": "821100",
+  "details": [
+    {
+      "quantity": 1,
+      "unit_code": "Unid",
+      "unit_price": 25000.00,
+      "description": "Servicio de consultoría",
+      "subtotal": 25000.00,
+      "tax_rate": 13,
+      "tax_amount": 3250.00
+    }
+  ],
+  "total_service": 25000.00,
+  "total_tax": 3250.00,
+  "total_gross": 28250.00,
+  "currency": "CRC",
+  "status": "draft",
+  "xml": "&lt;FacturaElectronica&gt;...&lt;/FacturaElectronica&gt;",
+  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "created_at": "2025-06-17T09:15:00-06:00",
+  "updated_at": "2025-06-17T09:15:00-06:00"
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- GET /api/v1/invoices/{id} -->
+      <section class="endpoint" id="endpoint-get-invoice">
+        <div class="endpoint__header">
+          <span class="badge badge--green">GET</span>
+          <code class="endpoint__path">/api/v1/invoices/{id}</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_get_invoice_title">Obtener factura por ID</h3>
+          <p data-i18n="api_get_invoice_desc">Recupera una factura completa a partir de su identificador único.</p>
+
+          <h4 data-i18n="api_path_params">Parámetros de Ruta</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="api_th_field">Campo</th>
+                  <th data-i18n="api_th_type">Tipo</th>
+                  <th data-i18n="api_th_required">Requerido</th>
+                  <th data-i18n="api_th_description">Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>id</code></td>
+                  <td>uuid</td>
+                  <td data-i18n="api_required">Sí</td>
+                  <td data-i18n="api_get_invoice_param_id">Identificador único de la factura.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Response — <span data-i18n="api_status_200">200 OK</span></h4>
+          <pre><code>{
+  "id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+  "doc_type": "01",
+  "key": "5061234567890123456789000000101000000001000000003",
+  "sequential": "0000000003",
+  "date": "2025-06-17T09:15:00-06:00",
+  "seller_name": "Mi Empresa S.A.",
+  "seller_id_number": "3101123456",
+  "seller_id_type": "02",
+  "receiver_name": "Carlos Ramírez",
+  "receiver_id_number": "109870654",
+  "receiver_id_type": "01",
+  "receiver_email": "carlos@ejemplo.com",
+  "activity_code": "821100",
+  "details": [
+    {
+      "quantity": 1,
+      "unit_code": "Unid",
+      "unit_price": 25000.00,
+      "description": "Servicio de consultoría",
+      "subtotal": 25000.00,
+      "tax_rate": 13,
+      "tax_amount": 3250.00
+    }
+  ],
+  "total_service": 25000.00,
+  "total_tax": 3250.00,
+  "total_gross": 28250.00,
+  "currency": "CRC",
+  "status": "signed",
+  "xml": "&lt;FacturaElectronica&gt;...&lt;/FacturaElectronica&gt;",
+  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "signature": "MEUCIQD...base64...==",
+  "submission_id": "d4e5f6a7-b8c9-0123-def4-567890123456",
+  "created_at": "2025-06-17T09:15:00-06:00",
+  "updated_at": "2025-06-17T09:16:00-06:00"
+}</code></pre>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand"><img src="assets/icon.png" alt="Fides" width="20" height="20">Fides <span class="footer__separator">·</span> <img src="assets/Mercurius.png" alt="Mercurius" width="20" height="20"> Mercurius <span class="footer__separator">·</span> <img src="assets/Mercatus.svg" alt="Mercatus" width="20" height="20"> Mercatus</div>
+      <div class="footer__links">
+        <a href="index.html" class="footer__link" data-i18n="nav_home">Inicio</a>
+        <a href="api-reference.html" class="footer__link" data-i18n="nav_api_reference">Referencia API</a>
+      </div>
+    </div>
+  </footer>
+  <script src="i18n.js"></script>
+  <script src="nav.js"></script>
+</body>
+</html>

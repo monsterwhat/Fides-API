@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fides — Endpoints Públicos</title>
+  <meta name="description" content="Documentación de los endpoints públicos de la API de facturación electrónica Fides. Sin autenticación requerida.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="assets/icon.png" alt="Fides" width="24" height="24">
+        Fides
+      </a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link" data-i18n="nav_home">Inicio</a>
+        <a href="api-reference.html" class="nav__link nav__link--active" data-i18n="nav_api_reference">Referencia API</a>
+      </div>
+      <div class="lang-switcher">
+        <button data-lang="en" class="lang-switcher__btn" title="English">EN</button>
+        <button data-lang="es" class="lang-switcher__btn" title="Español">ES</button>
+        <button data-lang="fr" class="lang-switcher__btn" title="Français">FR</button>
+        <button data-lang="de" class="lang-switcher__btn" title="Deutsch">DE</button>
+      </div>
+      <button class="nav__hamburger" aria-label="Menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile-menu">
+    <a href="index.html" class="nav__mobile-link" data-i18n="nav_home">Inicio</a>
+    <a href="api-reference.html" class="nav__mobile-link" data-i18n="nav_api_reference">Referencia API</a>
+    <div class="lang-switcher" style="display:flex;justify-content:center;margin:12px 0;">
+      <button data-lang="en" class="lang-switcher__btn" title="English">EN</button>
+      <button data-lang="es" class="lang-switcher__btn" title="Español">ES</button>
+      <button data-lang="fr" class="lang-switcher__btn" title="Français">FR</button>
+      <button data-lang="de" class="lang-switcher__btn" title="Deutsch">DE</button>
+    </div>
+  </div>
+
+  <!-- Layout: Sidebar + Content -->
+  <div class="api-layout">
+
+    <!-- Sidebar -->
+    <aside class="api-sidebar" id="sidebar">
+      <div class="api-sidebar__group">
+        <div class="api-sidebar__heading" data-i18n="api_sidebar_title">Referencia API</div>
+        <div class="api-sidebar__links">
+          <div style="padding: 4px 20px; font-size: 12px; color: var(--text-tertiary);">
+            <span data-i18n="api_sidebar_base_url">Base URL:</span>
+            <code style="color: var(--accent-primary);">/api/v1</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-sidebar__group">
+        <a href="index.html#overview" class="api-sidebar__link" data-i18n="api_sidebar_overview">Descripción General</a>
+        <a href="index.html#authentication" class="api-sidebar__link" data-i18n="api_sidebar_authentication">Autenticación</a>
+        <a href="index.html#errors" class="api-sidebar__link" data-i18n="api_sidebar_errors">Errores</a>
+      </div>
+
+      <div class="api-sidebar__group">
+        <button class="api-sidebar__heading" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('hidden')">
+          <span data-i18n="api_sidebar_public">Endpoints Públicos</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="api-sidebar__links">
+          <a href="#health" class="api-sidebar__link api-sidebar__link--active" data-i18n="api_sidebar_health">Salud</a>
+          <a href="#validate" class="api-sidebar__link" data-i18n="api_sidebar_validation">Validación</a>
+        </div>
+      </div>
+
+      <div class="api-sidebar__group">
+        <button class="api-sidebar__heading" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('hidden')">
+          <span data-i18n="api_sidebar_protected">Endpoints Protegidos</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="api-sidebar__links">
+          <a href="api-auth.html" class="api-sidebar__link" data-i18n="api_sidebar_auth">Autenticación</a>
+          <a href="api-documents.html" class="api-sidebar__link" data-i18n="api_sidebar_documents">Documentos</a>
+          <a href="api-invoices.html" class="api-sidebar__link" data-i18n="api_sidebar_invoices">Facturas</a>
+          <a href="api-submissions.html" class="api-sidebar__link" data-i18n="api_sidebar_submissions">Envíos</a>
+          <a href="api-companies.html" class="api-sidebar__link" data-i18n="api_sidebar_companies">Empresas</a>
+          <a href="api-branches.html" class="api-sidebar__link" data-i18n="api_sidebar_branches">Sucursales</a>
+          <a href="api-pos.html" class="api-sidebar__link" data-i18n="api_sidebar_pos">Puntos de Venta</a>
+          <a href="api-certificates.html" class="api-sidebar__link" data-i18n="api_sidebar_certificates">Certificados</a>
+          <a href="api-credentials.html" class="api-sidebar__link" data-i18n="api_sidebar_credentials">Credenciales</a>
+          <a href="api-api-keys.html" class="api-sidebar__link" data-i18n="api_sidebar_api_keys">Llaves API</a>
+          <a href="api-reports.html" class="api-sidebar__link" data-i18n="api_sidebar_reports">Reportes</a>
+          <a href="api-webhooks.html" class="api-sidebar__link" data-i18n="api_sidebar_webhooks">Webhooks</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="api-main">
+
+      <!-- Page header -->
+      <section>
+        <h1 data-i18n="api_public_title">Endpoints Públicos</h1>
+        <p data-i18n="api_public_desc">Estos endpoints no requieren autenticación. Pueden ser consumidos directamente sin token ni llave API.</p>
+      </section>
+
+      <!-- Quick reference -->
+      <section id="overview">
+        <h2 data-i18n="api_public_quick_ref">Referencia Rápida</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th data-i18n="api_th_method">Método</th>
+                <th data-i18n="api_th_path">Ruta</th>
+                <th data-i18n="api_th_description">Descripción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/health</code></td><td data-i18n="api_public_ref_health">Verificación de salud</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/ready</code></td><td data-i18n="api_public_ref_ready">Verificación de preparación</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/auth/register</code></td><td data-i18n="api_public_ref_register">Registrar usuario</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/auth/token</code></td><td data-i18n="api_public_ref_token">Obtener token de acceso</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/validate</code></td><td data-i18n="api_public_ref_validate">Validar documento XML</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/hacienda/mock/token</code></td><td data-i18n="api_public_ref_mock_token">Mock: token Hacienda</td></tr>
+              <tr><td><span class="badge badge--blue">POST</span></td><td><code>/hacienda/mock/recepcion</code></td><td data-i18n="api_public_ref_mock_submit">Mock: enviar documento</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/hacienda/mock/recepcion/{clave}</code></td><td data-i18n="api_public_ref_mock_status">Mock: estado del documento</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/hacienda/mock/comprobantes</code></td><td data-i18n="api_public_ref_mock_list">Mock: listar comprobantes</td></tr>
+              <tr><td><span class="badge badge--green">GET</span></td><td><code>/hacienda/mock/comprobantes/{clave}</code></td><td data-i18n="api_public_ref_mock_download">Mock: descargar comprobante</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ENDPOINTS -->
+      <!-- ============================================ -->
+
+      <!-- 1. Health -->
+      <section class="endpoint" id="health">
+        <div class="endpoint__header">
+          <span class="badge badge--green">GET</span>
+          <code class="endpoint__path">/api/v1/health</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_public_health_title">Verificación de salud</h3>
+          <p data-i18n="api_public_health_desc">Returns server status and version. No authentication required.</p>
+
+          <h4 data-i18n="api_public_response_200">Response — OK (200)</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="api_th_field">Campo</th>
+                  <th data-i18n="api_th_type">Tipo</th>
+                  <th data-i18n="api_th_description">Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><code>status</code></td><td>string</td><td data-i18n="api_public_health_field_status">"ok" o "degraded"</td></tr>
+                <tr><td><code>version</code></td><td>string</td><td data-i18n="api_public_health_field_version">Semantic version string</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 data-i18n="api_public_example">Ejemplo</h4>
+          <pre><code>{
+  "success": true,
+  "data": {
+    "status": "ok",
+    "version": "0.1.0"
+  },
+  "error": null
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- 2. Ready -->
+      <section class="endpoint" id="ready">
+        <div class="endpoint__header">
+          <span class="badge badge--green">GET</span>
+          <code class="endpoint__path">/api/v1/ready</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_public_ready_title">Verificación de preparación</h3>
+          <p data-i18n="api_public_ready_desc">Returns whether the server is ready to accept requests. Useful for load balancers and container orchestration.</p>
+
+          <h4 data-i18n="api_public_response_200">Response — OK (200)</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="api_th_field">Campo</th>
+                  <th data-i18n="api_th_type">Tipo</th>
+                  <th data-i18n="api_th_description">Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><code>ready</code></td><td>boolean</td><td data-i18n="api_public_ready_field_ready">true si el servidor está listo para recibir peticiones</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 data-i18n="api_public_example">Ejemplo</h4>
+          <pre><code>{
+  "success": true,
+  "data": {
+    "ready": true
+  },
+  "error": null
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- 3. Register -->
+      <section class="endpoint" id="register">
+        <div class="endpoint__header">
+          <span class="badge badge--blue">POST</span>
+          <code class="endpoint__path">/api/v1/auth/register</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_public_register_title">Registrar un nuevo usuario</h3>
+          <p data-i18n="api_public_register_desc">Create a new user account with email, password, name and tenant. No auth required.</p>
+
+          <h4 data-i18n="api_public_request_body">Request Body</h4>
+          <p data-i18n-html="api_public_register_content_type">Content-Type: <code>application/json</code></p>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="api_th_field">Campo</th>
+                  <th data-i18n="api_th_type">Tipo</th>
+                  <th data-i18n="api_th_required">Requerido</th>
+                  <th data-i18n="api_th_description">Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><code>email</code></td><td>string</td><td>Si</td><td data-i18n="api_public_register_field_email">Dirección de correo del usuario</td></tr>
+                <tr><td><code>password</code></td><td>string</td><td>Si</td><td data-i18n="api_public_register_field_password">Contraseña, mínimo 8 caracteres</td></tr>
+                <tr><td><code>name</code></td><td>string</td><td>No</td><td data-i18n="api_public_register_field_name">Nombre completo del usuario</td></tr>
+                <tr><td><code>tenant_id</code></td><td>uuid</td><td>Si</td><td data-i18n="api_public_register_field_tenant">Identificador del tenant</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 data-i18n="api_public_response_201">Response — Created (201)</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="api_th_field">Campo</th>
+                  <th data-i18n="api_th_type">Tipo</th>
+                  <th data-i18n="api_th_description">Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><code>id</code></td><td>uuid</td><td data-i18n="api_public_register_resp_id">Identificador único del usuario</td></tr>
+                <tr><td><code>email</code></td><td>string</td><td data-i18n="api_public_register_resp_email">Correo del usuario</td></tr>
+                <tr><td><code>name</code></td><td>string</td><td data-i18n="api_public_register_resp_name">Nombre del usuario</td></tr>
+                <tr><td><code>tenant_id</code></td><td>uuid</td><td data-i18n="api_public_register_resp_tenant">Identificador del tenant</td></tr>
+                <tr><td><code>created_at</code></td><td>string</td><td data-i18n="api_public_register_resp_created">Timestamp de creación (ISO 8601)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 data-i18n="api_public_example">Ejemplo</h4>
+          <pre><code>// Request
+{
+  "email": "usuario@ejemplo.com",
+  "password": "secreto123",
+  "name": "Juan Pérez",
+  "tenant_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+}
+
+// Response (201)
+{
+  "success": true,
+  "data": {
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "email": "usuario@ejemplo.com",
+    "name": "Juan Pérez",
+    "tenant_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "created_at": "2025-01-15T10:30:00Z"
+  },
+  "error": null
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- 4. Token -->
+      <section class="endpoint" id="token">
+        <div class="endpoint__header">
+          <span class="badge badge--blue">POST</span>
+          <code class="endpoint__path">/api/v1/auth/token</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_public_token_title">Obtener token de acceso</h3>
+          <p data-i18n="api_public_token_desc">Authenticate and receive a JWT access token. Supports "password" and "refresh_token" grant types.</p>
+
+          <h4 data-i18n="api_public_request_body">Request Body</h4>
+          <p data-i18n-html="api_public_token_content_type">Content-Type: <code>application/json</code></p>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="api_th_field">Campo</th>
+                  <th data-i18n="api_th_type">Tipo</th>
+                  <th data-i18n="api_th_required">Requerido</th>
+                  <th data-i18n="api_th_description">Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><code>grant_type</code></td><td>string</td><td>Si</td><td data-i18n="api_public_token_field_grant">"password" o "refresh_token"</td></tr>
+                <tr><td><code>email</code></td><td>string</td><td>Si*</td><td data-i18n="api_public_token_field_email">Correo electrónico (cuando grant_type es "password")</td></tr>
+                <tr><td><code>password</code></td><td>string</td><td>Si*</td><td data-i18n="api_public_token_field_password">Contraseña (cuando grant_type es "password")</td></tr>
+                <tr><td><code>refresh_token</code></td><td>string</td><td>Si*</td><td data-i18n="api_public_token_field_refresh">Token de refresco (cuando grant_type es "refresh_token")</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p data-i18n-html="api_public_footnote_required"><em>* Requerido según el valor de <code>grant_type</code>.</em></p>
+
+          <h4 data-i18n="api_public_response_200">Response — OK (200)</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="api_th_field">Campo</th>
+                  <th data-i18n="api_th_type">Tipo</th>
+                  <th data-i18n="api_th_description">Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><code>access_token</code></td><td>string</td><td data-i18n="api_public_token_resp_access">Token JWT de acceso</td></tr>
+                <tr><td><code>refresh_token</code></td><td>string</td><td data-i18n="api_public_token_resp_refresh">Token para renovar el access token</td></tr>
+                <tr><td><code>token_type</code></td><td>string</td><td data-i18n="api_public_token_resp_type">"Bearer"</td></tr>
+                <tr><td><code>expires_in</code></td><td>integer</td><td data-i18n="api_public_token_resp_expires">Tiempo de expiración en segundos</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 data-i18n="api_public_example">Ejemplo</h4>
+          <pre><code>// Request — Password grant
+{
+  "grant_type": "password",
+  "email": "usuario@ejemplo.com",
+  "password": "secreto123"
+}
+
+// Response (200)
+{
+  "success": true,
+  "data": {
+    "access_token": "eyJhbGciOiJIUzI1NiIs...",
+    "refresh_token": "dGhpcyBpcyBhIHJlZnJl...",
+    "token_type": "Bearer",
+    "expires_in": 3600
+  },
+  "error": null
+}</code></pre>
+
+          <h4 data-i18n="api_public_example_refresh">Ejemplo — Refresh token</h4>
+          <pre><code>// Request — Refresh grant
+{
+  "grant_type": "refresh_token",
+  "refresh_token": "dGhpcyBpcyBhIHJlZnJl..."
+}
+
+// Response (200)
+{
+  "success": true,
+  "data": {
+    "access_token": "eyJhbGciOiJIUzI1NiIs...",
+    "refresh_token": "bmV3IHJlZnJlc2ggdG9r...",
+    "token_type": "Bearer",
+    "expires_in": 3600
+  },
+  "error": null
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- 5. Validate -->
+      <section class="endpoint" id="validate">
+        <div class="endpoint__header">
+          <span class="badge badge--blue">POST</span>
+          <code class="endpoint__path">/api/v1/validate</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_public_validate_title">Validar documento XML</h3>
+          <p data-i18n="api_public_validate_desc">Validate an electronic invoice XML document against the current schema. No authentication required.</p>
+
+          <h4 data-i18n="api_public_request_body">Request Body</h4>
+          <p data-i18n-html="api_public_validate_content_type">Content-Type: <code>application/xml</code></p>
+          <p data-i18n="api_public_validate_body_desc">El cuerpo de la petición debe contener el documento XML de la factura electrónica.</p>
+
+          <h4 data-i18n="api_public_response_200">Response — OK (200)</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="api_th_field">Campo</th>
+                  <th data-i18n="api_th_type">Tipo</th>
+                  <th data-i18n="api_th_description">Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><code>valid</code></td><td>boolean</td><td data-i18n="api_public_validate_field_valid">true si el XML es válido según el esquema</td></tr>
+                <tr><td><code>errors</code></td><td>array</td><td data-i18n="api_public_validate_field_errors">Lista de errores de validación (vacía si es válido)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 data-i18n="api_public_response_422">Response — Validation Failed (422)</h4>
+          <p data-i18n="api_public_validate_422_desc">Devuelto cuando el documento XML contiene errores de validación contra el esquema.</p>
+
+          <h4 data-i18n="api_public_example">Ejemplo</h4>
+          <pre><code>// Request
+POST /api/v1/validate
+Content-Type: application/xml
+
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;FacturaElectronica version="4.4"&gt;
+  ...
+&lt;/FacturaElectronica&gt;
+
+// Response (200) — Documento válido
+{
+  "success": true,
+  "data": {
+    "valid": true,
+    "errors": []
+  },
+  "error": null
+}</code></pre>
+
+          <h4 data-i18n="api_public_example_invalid">Ejemplo — Documento inválido</h4>
+          <pre><code>// Response (200) — Con errores
+{
+  "success": true,
+  "data": {
+    "valid": false,
+    "errors": [
+      {
+        "line": 3,
+        "column": 15,
+        "message": "Element 'NumeroConsecutivo' is required"
+      },
+      {
+        "line": 5,
+        "column": 20,
+        "message": "Invalid date format for 'FechaEmision'"
+      }
+    ]
+  },
+  "error": null
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- 6. Mock endpoints -->
+      <section class="endpoint" id="mock">
+        <div class="endpoint__header">
+          <span class="badge badge--blue">MOCK</span>
+          <code class="endpoint__path">/api/v1/hacienda/mock/*</code>
+        </div>
+        <div class="endpoint__body">
+          <h3 data-i18n="api_public_mock_title">Endpoints Mock de Hacienda</h3>
+          <p data-i18n="api_public_mock_desc">Development-only mock endpoints that simulate Hacienda API responses. These endpoints are for testing and development only.</p>
+
+          <div data-i18n-html="api_public_dev_warning" style="background: var(--bg-secondary, #fef3c7); border: 1px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 16px 0; font-size: 14px;">
+            <strong>⚠ Solo disponible en modo desarrollo.</strong> Estos endpoints no están disponibles en producción.
+          </div>
+
+          <!-- Mock Token -->
+          <section class="endpoint" id="mock-token" style="margin-top: 24px;">
+            <div class="endpoint__header">
+              <span class="badge badge--blue">POST</span>
+              <code class="endpoint__path">/api/v1/hacienda/mock/token</code>
+            </div>
+            <div class="endpoint__body">
+              <h4 data-i18n="api_public_mock_token_title">Mock: Token de Hacienda</h4>
+              <p data-i18n="api_public_mock_token_desc">Returns a mock Hacienda access token. Simulates the real Hacienda OAuth flow for local development.</p>
+
+              <h4 data-i18n="api_public_response_200">Response — OK (200)</h4>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th data-i18n="api_th_field">Campo</th>
+                      <th data-i18n="api_th_type">Tipo</th>
+                      <th data-i18n="api_th_description">Descripción</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>access_token</code></td><td>string</td><td data-i18n="api_public_mock_token_field_access">Token mock de Hacienda</td></tr>
+                    <tr><td><code>token_type</code></td><td>string</td><td data-i18n="api_public_mock_token_field_type">"bearer"</td></tr>
+                    <tr><td><code>expires_in</code></td><td>integer</td><td data-i18n="api_public_mock_token_field_expires">Tiempo de expiración en segundos</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h4 data-i18n="api_public_example">Ejemplo</h4>
+              <pre><code>// Request
+POST /api/v1/hacienda/mock/token
+Content-Type: application/json
+
+{}
+
+// Response (200)
+{
+  "success": true,
+  "data": {
+    "access_token": "mock_hacienda_token_abc123",
+    "token_type": "bearer",
+    "expires_in": 600
+  },
+  "error": null
+}</code></pre>
+            </div>
+          </section>
+
+          <!-- Mock Submit Document -->
+          <section class="endpoint" id="mock-submit">
+            <div class="endpoint__header">
+              <span class="badge badge--blue">POST</span>
+              <code class="endpoint__path">/api/v1/hacienda/mock/recepcion</code>
+            </div>
+            <div class="endpoint__body">
+              <h4 data-i18n="api_public_mock_submit_title">Mock: Enviar documento</h4>
+              <p data-i18n="api_public_mock_submit_desc">Simulates document submission to Hacienda. Returns a clave and initial status.</p>
+
+              <h4 data-i18n="api_public_response_200">Response — OK (200)</h4>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th data-i18n="api_th_field">Campo</th>
+                      <th data-i18n="api_th_type">Tipo</th>
+                      <th data-i18n="api_th_description">Descripción</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>clave</code></td><td>string</td><td data-i18n="api_public_mock_submit_field_clave">Clave del documento simulado</td></tr>
+                    <tr><td><code>estado</code></td><td>string</td><td data-i18n="api_public_mock_submit_field_estado">Estado inicial del envío</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h4 data-i18n="api_public_example">Ejemplo</h4>
+              <pre><code>// Request
+POST /api/v1/hacienda/mock/recepcion
+Content-Type: application/xml
+
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?xml-stylesheet ...?&gt;
+&lt;...&gt;
+
+// Response (200)
+{
+  "success": true,
+  "data": {
+    "clave": "5061307250001010000001001000000010012345678901",
+    "estado": "procesando"
+  },
+  "error": null
+}</code></pre>
+            </div>
+          </section>
+
+          <!-- Mock Check Status -->
+          <section class="endpoint" id="mock-status">
+            <div class="endpoint__header">
+              <span class="badge badge--green">GET</span>
+              <code class="endpoint__path">/api/v1/hacienda/mock/recepcion/{clave}</code>
+            </div>
+            <div class="endpoint__body">
+              <h4 data-i18n="api_public_mock_status_title">Mock: Verificar estado</h4>
+              <p data-i18n="api_public_mock_status_desc">Checks the mock status of a previously submitted document.</p>
+
+              <h4 data-i18n="api_public_path_params">Path Parameters</h4>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th data-i18n="api_th_field">Campo</th>
+                      <th data-i18n="api_th_type">Tipo</th>
+                      <th data-i18n="api_th_description">Descripción</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>clave</code></td><td>string</td><td data-i18n="api_public_mock_status_param_clave">Clave del documento</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h4 data-i18n="api_public_response_200">Response — OK (200)</h4>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th data-i18n="api_th_field">Campo</th>
+                      <th data-i18n="api_th_type">Tipo</th>
+                      <th data-i18n="api_th_description">Descripción</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>clave</code></td><td>string</td><td data-i18n="api_public_mock_status_field_clave">Clave del documento</td></tr>
+                    <tr><td><code>estado</code></td><td>string</td><td data-i18n="api_public_mock_status_field_estado">Estado actual: "procesando", "aceptado" o "rechazado"</td></tr>
+                    <tr><td><code>mensaje</code></td><td>string</td><td data-i18n="api_public_mock_status_field_mensaje">Mensaje de Hacienda</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h4 data-i18n="api_public_example">Ejemplo</h4>
+              <pre><code>// Request
+GET /api/v1/hacienda/mock/recepcion/5061307250001010000001001000000010012345678901
+
+// Response (200)
+{
+  "success": true,
+  "data": {
+    "clave": "5061307250001010000001001000000010012345678901",
+    "estado": "aceptado",
+    "mensaje": "Mensaje de Hacienda"
+  },
+  "error": null
+}</code></pre>
+            </div>
+          </section>
+
+          <!-- Mock List Documents -->
+          <section class="endpoint" id="mock-list">
+            <div class="endpoint__header">
+              <span class="badge badge--green">GET</span>
+              <code class="endpoint__path">/api/v1/hacienda/mock/comprobantes</code>
+            </div>
+            <div class="endpoint__body">
+              <h4 data-i18n="api_public_mock_list_title">Mock: Listar comprobantes</h4>
+              <p data-i18n="api_public_mock_list_desc">Returns a list of mock documents previously submitted.</p>
+
+              <h4 data-i18n="api_public_response_200">Response — OK (200)</h4>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th data-i18n="api_th_field">Campo</th>
+                      <th data-i18n="api_th_type">Tipo</th>
+                      <th data-i18n="api_th_description">Descripción</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>comprobantes</code></td><td>array</td><td data-i18n="api_public_mock_list_field_list">Lista de comprobantes simulados</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h4 data-i18n="api_public_example">Ejemplo</h4>
+              <pre><code>// Request
+GET /api/v1/hacienda/mock/comprobantes
+
+// Response (200)
+{
+  "success": true,
+  "data": {
+    "comprobantes": [
+      {
+        "clave": "5061307250001010000001001000000010012345678901",
+        "estado": "aceptado",
+        "fecha": "2025-01-15T10:30:00Z"
+      }
+    ]
+  },
+  "error": null
+}</code></pre>
+            </div>
+          </section>
+
+          <!-- Mock Download Document -->
+          <section class="endpoint" id="mock-download">
+            <div class="endpoint__header">
+              <span class="badge badge--green">GET</span>
+              <code class="endpoint__path">/api/v1/hacienda/mock/comprobantes/{clave}</code>
+            </div>
+            <div class="endpoint__body">
+              <h4 data-i18n="api_public_mock_download_title">Mock: Descargar comprobante</h4>
+              <p data-i18n="api_public_mock_download_desc">Downloads a mock document by clave. Returns the XML content of the electronic invoice.</p>
+
+              <h4 data-i18n="api_public_path_params">Path Parameters</h4>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th data-i18n="api_th_field">Campo</th>
+                      <th data-i18n="api_th_type">Tipo</th>
+                      <th data-i18n="api_th_description">Descripción</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>clave</code></td><td>string</td><td data-i18n="api_public_mock_download_param_clave">Clave del documento a descargar</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h4 data-i18n="api_public_response_200_xml">Response — OK (200)</h4>
+              <p data-i18n-html="api_public_mock_download_content_type">Content-Type: <code>application/xml</code></p>
+              <p data-i18n="api_public_mock_download_resp_desc">Devuelve el documento XML completo del comprobante electrónico.</p>
+
+              <h4 data-i18n="api_public_example">Ejemplo</h4>
+              <pre><code>// Request
+GET /api/v1/hacienda/mock/comprobantes/5061307250001010000001001000000010012345678901
+
+// Response (200)
+Content-Type: application/xml
+
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?xml-stylesheet type="text/xsl" href="cr_fc_v4.4.xsl"?&gt;
+&lt;FacturaElectronica version="4.4"&gt;
+  &lt;Clave&gt;5061307250001010000001001000000010012345678901&lt;/Clave&gt;
+  ...
+&lt;/FacturaElectronica&gt;</code></pre>
+            </div>
+          </section>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/icon.png" alt="Fides" width="20" height="20">
+        Fides
+        <span class="footer__separator">·</span>
+        <img src="assets/Mercurius.png" alt="Mercurius" width="20" height="20">
+        Mercurius
+        <span class="footer__separator">·</span>
+        <img src="assets/Mercatus.svg" alt="Mercatus" width="20" height="20">
+        Mercatus
+      </div>
+      <div class="footer__links">
+        <a href="index.html" class="footer__link" data-i18n="nav_home">Inicio</a>
+        <a href="api-reference.html" class="footer__link" data-i18n="nav_api_reference">Referencia API</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="nav.js"></script>
+</body>
+</html>

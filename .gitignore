@@ -1,0 +1,26 @@
+# Dependencies / build
+node_modules/
+dist/
+build/
+.cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Codegraph
+.codegraph/
+
+# Sessions
+sessions/
+
+# Environment
+.env
+.env.*
