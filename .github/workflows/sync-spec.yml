@@ -1,0 +1,49 @@
+# Keeps openapi.json in sync with monsterwhat/Fides.
+#
+# - Weekly schedule + manual dispatch. First manual run creates openapi.json.
+# - Regenerates the spec from Fides' utoipa annotations via
+#   api/examples/export_openapi.rs, commits only on diff.
+# - The Pages workflow then publishes the updated site (incl. openapi.json).
+#
+# Optional: trigger right after Fides pushes by adding a repository_dispatch
+# sender workflow in monsterwhat/Fides (needs a token with repo scope).
+
+name: Sync OpenAPI spec from Fides
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Fides-API (this repo)
+        uses: actions/checkout@v4
+      - name: Checkout Fides
+        uses: actions/checkout@v4
+        with:
+          repository: monsterwhat/Fides
+          path: .fides-src
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+      - name: Export OpenAPI spec
+        run: cargo run -q -p fides-api --example export_openapi > openapi.json
+        working-directory: .fides-src
+      - name: Commit if changed
+        run: |
+          FIDES_SHA=$(git -C .fides-src rev-parse --short HEAD)
+          rm -rf .fides-src
+          git add openapi.json
+          if git diff --cached --quiet; then
+            echo "openapi.json already in sync with Fides@${FIDES_SHA}"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: sync openapi.json from monsterwhat/Fides@${FIDES_SHA}"
+          git push
